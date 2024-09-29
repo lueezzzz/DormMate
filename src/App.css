@@ -1,15 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+.navbar{
+  width: 1200px;
+  margin: auto;
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  color: white;
+  position: relative;
+  bottom: 600px;
 
-* {
-  padding: 0;
-  margin: 0;
-  outline: none;
-  border: none;
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style: none;
-  font-family: Inter;
 }
 
+.logo{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.nav-links{
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.nav-links a{
+    color: white;
+}
+
+.hero-section{
+  position: relative;
+  color: white;
+  text-align: center;
+  bottom: 100px;
+}
+
+.hero-content{
+  position: absolute;
+  top: 62%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-content h1{
+  font-size: 2rem;
+  font-weight: 650;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.hero-img {
+  width: 100%;
+}
+
+.cta-btn {
+  background-color: #FF8D4E;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+}
 
 

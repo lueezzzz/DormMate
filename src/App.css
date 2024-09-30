@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
   width: 1200px;
   margin: auto;
   padding: 2rem 1rem;
@@ -9,42 +9,43 @@
   color: white;
   position: relative;
   bottom: 600px;
-
 }
 
-.logo{
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
+.logo {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
-.nav-links{
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-    font-size: 17px;
-    font-weight: 700;
+.nav-links {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 700;
+  list-style: none;
 }
 
-.nav-links a{
-    color: white;
+.nav-links a {
+  color: white;
+  text-decoration: none;
 }
 
-.hero-section{
+.hero-section {
   position: relative;
   color: white;
   text-align: center;
   bottom: 100px;
 }
 
-.hero-content{
+.hero-content {
   position: absolute;
   top: 62%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.hero-content h1{
+.hero-content h1 {
   font-size: 2rem;
   font-weight: 650;
   margin-bottom: 1rem;
@@ -61,7 +62,7 @@
 }
 
 .cta-btn {
-  background-color: #FF8D4E;
+  background-color: #ff8d4e;
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -71,4 +72,88 @@
   cursor: pointer;
 }
 
+.leaf-img {
+  position: relative;
+  left: 1050px;
+}
 
+.feature-section{
+  position: relative;
+  bottom: 100px;
+}
+
+.feature-container {
+  display: flex;
+  width: 1400px;
+  gap: 3rem;
+  margin-left: 110px;
+  flex-direction: row;
+}
+
+.filler-img {
+  width: 600px;
+}
+
+.feature-content {
+  position: relative;
+  top: 5rem;
+  line-height: 1.5rem;
+}
+
+.feature-content h2 {
+  font-size: 30px;
+}
+
+.feature-content p {
+  font-size: 18px;
+  width: 600px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.features{
+  list-style: none;
+}
+
+.features li::before{
+  content: '✓ ';
+  font-weight: bold;
+}
+
+.about-section {
+  padding: 100px;
+  position: relative;
+  bottom: 100px;
+}
+
+.about-content{
+  width: 750px;
+  line-height: 1.5rem;
+  display: flex;
+  margin-left: 50px
+}
+
+.about-content h2{
+  padding-bottom: 1rem;
+  font-size: 30px;
+}
+
+.about-content p{
+  font-size: 18px;
+}
+
+.filler-img2{
+  width: 400%;
+  position: relative;
+  left: 150px;
+}
+
+.leaf2-img{
+  position: relative;
+  right: 100px;
+  bottom: 250px;
+}
+
+.author-section h2{
+  text-align: center;
+}

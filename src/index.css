@@ -6,7 +6,9 @@
   outline: none;
   border: none;
   box-sizing: border-box;
-  text-decoration: none;
-  list-style: none;
   font-family: Inter;
+}
+
+html{
+  scroll-behavior: smooth;
 }

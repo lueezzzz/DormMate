@@ -157,3 +157,74 @@
 .author-section h2{
   text-align: center;
 }
+
+.container {
+  display: flex;
+  justify-content: space-between; 
+  padding: 100px 130px 100px 100px;
+}
+
+.roof-image{
+  margin-left: 120px;
+}
+
+.welcome-section h1 {
+  font-size: 25px;
+  text-align: center;
+  margin-left: 215px;
+  position: absolute;
+  top:230px;
+  left: 100px;
+}
+
+.welcome-section h2 {
+  font-size: 25px;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-left: 120px;
+}
+
+.dorm-details p {
+  font-size: 14px;
+  margin: 3px 0 3px 170px;
+}
+
+.file-permit {
+  margin-top: 20px;
+  margin-left: 215px;
+}
+
+.permit-button {
+  background-color: #f37338;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.permit-button:hover {
+  background-color: #e9652c;
+}
+
+.permit-logs {
+  padding: 25px;
+  border-style: groove;
+  border-radius: 16px;
+}
+
+.permit-logs h3{
+  color: #f37338;
+}
+
+.permit-logs p{
+  text-align: center;
+  color: #686D76;
+  margin: 0;
+}
+
+.EmptyLog-image{
+  padding: 0 120px;
+}

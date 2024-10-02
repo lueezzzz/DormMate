@@ -2,7 +2,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import AdminPermits from "./pages/AdminPermits.jsx";
-import PermitCard from "./components/PermitCard.jsx";
+import DormerHomepage from "./pages/DormerHomepage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -14,8 +14,8 @@ const router = createBrowserRouter([
     element: <AdminPermits />,
   },
   {
-    path: "/permit",
-    element: <PermitCard />,
+    path: "/dormer",
+    element: <DormerHomepage />,
   },
 ]);
 

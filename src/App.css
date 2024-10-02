@@ -157,3 +157,56 @@
 .author-section h2{
   text-align: center;
 }
+
+.transient-headline {
+  position: relative;
+  color: black;
+  bottom: 100px;
+}
+
+.headline-content {
+  margin: auto;
+  text-align: center;
+}
+
+.headline-content h1 {
+  font-size: 2rem;
+  font-weight: 650;
+  margin-bottom: 1rem;
+}
+
+.headline-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: gray;
+}
+
+.booking-success-message {
+  position: relative;
+  color: black;
+  bottom: 100px;
+}
+
+.success-msg-content {
+  margin: auto;
+  text-align: center;
+}
+
+.success-msg-content h1{
+  font-size: 2rem;
+  font-weight: 650;
+  margin-bottom: 1rem;
+}
+
+.success-msg-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: gray;
+}
+
+.check-icon {
+  margin: auto;
+  margin-bottom: 1rem;;
+}

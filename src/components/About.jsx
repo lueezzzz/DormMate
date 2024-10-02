@@ -19,11 +19,10 @@ const About = () => {
               bookings—whenever and wherever you need it.
             </p>
           </div>
-          <div>
-            <img src={fillerImg2} className="filler-img2" alt="filler-image" />
-          </div>
+
+          <img src={fillerImg2} alt="filler-img2" className="filler-img2" />
         </div>
-        <img src={leaf2} alt="" className="leaf2-img"/>
+        <img src={leaf2} alt="" className="leaf2-img" />
       </section>
     </>
   );

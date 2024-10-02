@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import AdminPermits from "./pages/AdminPermits.jsx";
 import DormerHomepage from "./pages/DormerHomepage.jsx";
+import TransientView from "./pages/TransientView.jsx";
+import TransientSuccess from "./pages/TransientSuccess.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,14 @@ const router = createBrowserRouter([
     path: "/dormer",
     element: <DormerHomepage />,
   },
+  {
+    path: "/transient",
+    element: <TransientView/>
+  },
+  {
+    path: "/transient-success",
+    element: <TransientSuccess/>
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(

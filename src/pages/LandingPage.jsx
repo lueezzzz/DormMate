@@ -5,7 +5,6 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Feature from '../components/Feature';
 import Authors from '../components/Authors';
-import { Button } from '@/components/ui/button';
 
 const LandingPage = () => {
   return (
@@ -15,7 +14,6 @@ const LandingPage = () => {
       <Feature/>
       <About/>
       <Authors/>
-      <Button/>
     </>
   );
 }

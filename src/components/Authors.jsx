@@ -5,7 +5,7 @@ const Authors = () => {
   return (
     <section className="author-section" id="authors">
       <h2>Meet the Authors</h2>
-      
+
     </section>
   );
 }

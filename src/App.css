@@ -234,7 +234,7 @@
 .transient-headline {
   position: relative;
   color: black;
-  bottom: 100px;
+  bottom: 20px;
 }
 
 .headline-content {
@@ -282,4 +282,8 @@
 .check-icon {
   margin: auto;
   margin-bottom: 1rem;;
+}
+
+.description-bg{
+  background-color: #f37338;
 }

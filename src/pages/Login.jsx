@@ -1,9 +1,16 @@
 import React, { useState } from "react";
-import logIn from "@/hooks/useLogin";
-import logOut from "@/hooks/useLogout";
+import logIn from "@/utils/useLogin";
+import logOut from "@/utils/useLogout";
+import { useNavigate } from "react-router-dom";
+
 const LoginPage = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  async function handleLogin() {
+    const route = await logIn(email, password);
+    navigate(route);
+  }
 
   return (
     <div className={"mainContainer"}>
@@ -33,7 +40,7 @@ const LoginPage = (props) => {
         <input
           className={"inputButton"}
           type="button"
-          onClick={() => logIn(email, password)}
+          onClick={() => handleLogin()}
           value={"Log in"}
         />
       </div>

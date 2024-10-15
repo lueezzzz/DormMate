@@ -8,6 +8,10 @@ const LoginPage = (props) => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  //for login page, create handler function and you can get the corresponding route by using the resolveRouteByLogin function
+  //params are email and password from input
+  //don't forget to add `await` before function call and add `async` to the handler function
+  //you can use the return value which is a route to navigate to the next page
   async function handleLogin() {
     const route = await resolveRouteByLogin(email, password);
     navigate(route);

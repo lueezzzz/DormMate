@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import logIn from "@/utils/useLogin";
 import logOut from "@/utils/useLogout";
 import { useNavigate } from "react-router-dom";
+import resolveRouteByLogin from "@/utils/resolveRouteByLogin";
 
 const LoginPage = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
   async function handleLogin() {
-    const route = await logIn(email, password);
+    const route = await resolveRouteByLogin(email, password);
     navigate(route);
   }
 

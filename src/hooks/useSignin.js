@@ -7,7 +7,6 @@ function signIn(email, password) {
             // Signed in
             const user = userCredential.user;
             console.log(user);
-
             // ...
         })
         .catch((error) => {

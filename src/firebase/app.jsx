@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 
-
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_API_KEY,
     authDomain: "dormmate-611b6.firebaseapp.com",
@@ -11,5 +10,4 @@ const firebaseConfig = {
     measurementId: "G-TT82YHGK86",
 };
 
-
-export const app = initializeApp(firebaseConfig)
+export const app = initializeApp(firebaseConfig);

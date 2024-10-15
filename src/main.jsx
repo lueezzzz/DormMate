@@ -5,6 +5,7 @@ import AdminPermits from "./pages/AdminPermits.jsx";
 import DormerHomepage from "./pages/DormerHomepage.jsx";
 import TransientView from "./pages/TransientView.jsx";
 import TransientSuccess from "./pages/TransientSuccess.jsx";
+import LoginPage from "./pages/Login.jsx";
 
 
 const router = createBrowserRouter([
@@ -22,12 +23,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/transient",
-    element: <TransientView/>
+    element: <TransientView />,
   },
   {
     path: "/transient-success",
-    element: <TransientSuccess/>
-  }
+    element: <TransientSuccess />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(

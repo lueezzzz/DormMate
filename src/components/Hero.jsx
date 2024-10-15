@@ -1,7 +1,9 @@
 import React from "react";
 import "../css/Hero.css";
+import { useNavigate } from "react-router";
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <>
       <section className="hero" id="home">
@@ -16,7 +18,7 @@ const Hero = () => {
               stay updated on announcements, and manage everything in one place.
               Dorm life made simple!
             </p>
-            <button className="cta-btn">Get Started</button>
+            <button className="cta-btn" onClick={() => navigate("/login")}> Get Started </button>
           </div>
         </div>
       </section>

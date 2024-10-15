@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 3rem;
+  padding: 2rem 4rem;
   position: relative;
   margin: 1rem;
   height: 2rem;
@@ -54,6 +54,7 @@
 }
 
 .nav-toggle,
+.nav-toggle-login,
 .nav-close {
   font-size: 1.75rem;
   cursor: pointer;
@@ -71,6 +72,58 @@
 
 .nav-close {
   display: none;
+}
+
+.navbar-login {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 4rem;
+  position: relative;
+  margin: 1rem;
+  height: 2rem;
+}
+.logo-login {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-login h1 {
+  font-weight: bold;
+  color: #fca77d;
+}
+
+.nav-links-login {
+  color: #fca77d;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav-links-login a {
+  font-weight: bold;
+}
+
+.nav-links-login a:hover {
+  color: #f98c5a;
+  transition: all 0.3s linear;
+}
+
+.btn-transient {
+  background-color: #fca77d;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-transient:hover {
+  background-color: #f98c5a;
 }
 
 @media screen and (max-width: 800px) {
@@ -96,7 +149,21 @@
     align-items: flex-start;
   }
 
+  .nav-links-login {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links-login a {
+    color: white;
+  }
+
   .nav-links a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .nav-links-login a {
     color: white;
     text-decoration: none;
   }
@@ -106,7 +173,13 @@
     transition: all 0.3s linear;
   }
 
-  .color-toggle {
+  .nav-links-login a:hover {
+    color: #d3723e;
+    transition: all 0.3s linear;
+  }
+
+  .color-toggle,
+  .toggle-transient {
     display: none;
   }
 
@@ -125,6 +198,15 @@
     color: black;
   }
 
+  .nav-toggle-login {
+    color: #ff8d4e;
+  }
+
+  .nav-toggle-login:hover {
+    color: #d3723e;
+    transition: all 0.3s linear;
+  }
+
   .nav-toggle:hover {
     color: #d3723e;
     transition: all 0.3s linear;
@@ -137,8 +219,8 @@
   }
 
   .nav-close,
-  .nav-toggle {
+  .nav-toggle, .nav-toggle-login,
+  .transient {
     display: none;
   }
-  
 }

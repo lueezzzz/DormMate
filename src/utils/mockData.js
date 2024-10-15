@@ -1,8 +1,9 @@
-import Jala from "../assets/images/Jala.png"
+import Jala from "../assets/images/Jala.png";
 import Daniella from "../assets/images/Daniella.png";
 import Khanne from "../assets/images/Khanne.png";
 import Rian from "../assets/images/Rian.png";
-import Andry from "../assets/images/Andry.png"
+import Andry from "../assets/images/Andry.png";
+import dorm1 from "../assets/images/dorm1.jpg";
 
 export const permitsMockData = [
   {
@@ -104,4 +105,15 @@ export const socialLinks = [
 
     class: "fa-solid fa-envelope",
   },
+];
+
+export const dorms = [
+  { title: "Balay Madyaas", image: dorm1, avl_rooms: "15" },
+  { title: "Balay Kanlaon", image: dorm1, avl_rooms: "10" },
+  { title: "Balay Lampirong", image: dorm1, avl_rooms: "10" },
+  { title: "Balay Gumamela", image: dorm1, avl_rooms: "10" },
+  { title: "Balay Apitong", image: dorm1, avl_rooms: "12" },
+  { title: "Balay Miagos", image: dorm1, avl_rooms: "10" },
+  { title: "International Dormitory", image: dorm1, avl_rooms: "10" },
+  { title: "Balay Ilonggo", image: dorm1, avl_rooms: "13" },
 ];

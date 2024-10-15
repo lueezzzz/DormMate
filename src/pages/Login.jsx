@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import signIn from "@/hooks/useSignin";
-import signOut from "@/hooks/useSignOut";
+import logIn from "@/hooks/useLogin";
+import logOut from "@/hooks/useLogout";
 const LoginPage = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,7 +33,7 @@ const LoginPage = (props) => {
         <input
           className={"inputButton"}
           type="button"
-          onClick={() => signIn(email, password)}
+          onClick={() => logIn(email, password)}
           value={"Log in"}
         />
       </div>
@@ -41,7 +41,7 @@ const LoginPage = (props) => {
         <input
           className={"inputButton"}
           type="button"
-          onClick={() => signOut()}
+          onClick={() => logOut()}
           value={"Log out"}
         />
       </div>

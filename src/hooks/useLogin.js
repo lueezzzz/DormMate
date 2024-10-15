@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/auth";
 
-function signIn(email, password) {
+function logIn(email, password) {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in
@@ -17,4 +17,4 @@ function signIn(email, password) {
         });
 }
 
-export default signIn;
+export default logIn;

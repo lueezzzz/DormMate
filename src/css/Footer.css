@@ -1,0 +1,31 @@
+.footer {
+  text-align: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  color: white;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+  color: white;
+  transition: all 0.3s linear;
+}
+.footer-icon:hover {
+  color: #d3723e;
+  transition: all 0.3s linear;
+}
+.copyright {
+  text-transform: capitalize;
+  color: white;
+}
+.copyright span {
+  margin-left: 0.5rem;
+}

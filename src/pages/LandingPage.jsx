@@ -5,16 +5,18 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Feature from '../components/Feature';
 import Authors from '../components/Authors';
+import Footer from '@/components/Footer';
 
 
 const LandingPage = () => {
   return (
     <>
-      <Hero />
       <Navbar />
-      <Feature/>
-      <About/>
-      <Authors/>
+      <Hero />
+      <Feature />
+      <About />
+      <Authors />
+      <Footer/>
     </>
   );
 }

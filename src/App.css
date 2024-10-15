@@ -70,9 +70,7 @@
 }
 
 .transient-headline {
-  position: relative;
-  color: black;
-  bottom: 20px;
+  padding: 50px;
 }
 
 .headline-content {
@@ -82,7 +80,7 @@
 
 .headline-content h1 {
   font-size: 2rem;
-  font-weight: 650;
+  font-weight: bold;
   margin-bottom: 1rem;
 }
 
@@ -125,3 +123,4 @@
 .description-bg{
   background-color: #f37338;
 }
+

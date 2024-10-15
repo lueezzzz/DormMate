@@ -1,0 +1,82 @@
+.login{
+    min-height: 60vh;
+}
+
+
+.welcome-user{
+    text-align: center;
+}
+
+.welcome-user h2{
+    color: #ff8d4e;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.welcome-user p{
+    color: #FEA96D;
+
+}
+
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: first baseline;
+  align-items: center;
+  margin-top: 100px;
+  padding: 20px;
+}
+
+
+.titleContainer {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+
+.inputContainer {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1rem;
+}
+
+.inputBox {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.inputBox:focus {
+  border-color: #fca77d;
+}
+
+.inputButton {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: #fca77d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.inputButton:hover {
+  background-color: #d3723e;
+}
+
+.inputButton + .inputButton {
+  margin-top: 1rem;
+}
+
+

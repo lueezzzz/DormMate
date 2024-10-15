@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/resizable";
 
 import PermitCard from "@/components/PermitCard";
-import permitsMockData from "@/utils/mockData";
+import { permitsMockData } from "@/utils/mockData";
 
 const AdminPermits = () => {
   const [permitType, setPermitType] = useState("Late Night");

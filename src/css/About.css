@@ -1,0 +1,35 @@
+.about {
+  display: flex;
+}
+
+.about-content {
+  line-height: 2rem;
+}
+
+.about-content h2 {
+  margin-bottom: 1rem;
+  font-size: 35px;
+  font-weight: bolder;
+}
+
+.about-content p {
+  font-size: 20px;
+}
+
+.filler-img2 {
+  width: 1200px;
+}
+
+@media screen and (max-width: 800px) {
+    .filler-img2{
+        display: none;
+    }
+
+    .about-content h2{
+        text-align: center;
+    }
+
+    .about{
+        margin-bottom: 100px;
+    }
+}

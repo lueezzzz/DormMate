@@ -1,0 +1,47 @@
+  .feature {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 100px;
+  }
+
+  .feature img {
+    width: 50%;
+  }
+
+  .feature-content {
+    line-height: 1.5rem;
+  }
+
+  .feature-content h2 {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .feature-content p {
+    font-size: 20px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .features li{
+    font-size: 18px;
+    margin-bottom: 1rem;
+  }
+
+  .features li::before {
+    content: "✓ ";
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+@media screen and (max-width: 800px){
+  .feature img{
+    display: none;
+  }
+
+  .feature-content h2{
+    text-align: center;
+  }
+}
+
+

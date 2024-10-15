@@ -83,3 +83,11 @@ html{
     @apply bg-background text-foreground;
   }
 }
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}

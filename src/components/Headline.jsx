@@ -1,20 +1,14 @@
-import React from 'react'
+import React from "react";
 
-const Headline = () => {
+const Headline = ({ header, subHeader }) => {
   return (
     <>
-      <section className="transient-headline">
-        <div className="headline-content">
-          <h1>
-            Welcome UPV Guests!
-          </h1>
-          <p>
-            Browse Available Dormitories & Book Your Stay
-          </p>
-        </div>
-      </section>
+      <div className="headline-content">
+        <h1>{header}</h1>
+        <p>{subHeader}</p>
+      </div>
     </>
   );
 };
 
-export default Headline
+export default Headline;

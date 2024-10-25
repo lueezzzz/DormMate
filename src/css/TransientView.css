@@ -1,0 +1,23 @@
+.transient-view{
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+    min-height: 100vh;
+}
+
+.headline-content {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.headline-content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.headline-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: gray;
+}

@@ -3,11 +3,11 @@ import Navbar from "@/components/Navbar";
 import LoginForm from "@/components/LoginForm";
 import Footer from "@/components/Footer";
 
-const LoginPage = (props) => {
+const LoginPage = () => {
   return (
     <>
       <Navbar />
-      <LoginForm onEmailChange={(e) => setEmail(e.target.value)} />
+      <LoginForm />
       <Footer />
     </>
   );

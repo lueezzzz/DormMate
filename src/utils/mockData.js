@@ -117,3 +117,36 @@ export const dorms = [
   { title: "International Dormitory", image: dorm1, avl_rooms: "10" },
   { title: "Balay Ilonggo", image: dorm1, avl_rooms: "13" },
 ];
+
+export const navConfig = {
+  "/": [
+    { href: "#home", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#authors", label: "Authors" },
+  ],
+  "/login": [
+    { href: "#home", label: "Home", link: "/" },
+    { href: "#about", label: "About", link: "/" },
+    { href: "#authors", label: "Authors", link: "/" },
+    { href: "#transient", label: "Transient", link: "/transient", className: "transient" },
+  ],
+  "/transient": [
+    { href: "#home", label: "Home", link: "/" },
+    { href: "#about", label: "About", link: "/" },
+    { href: "#authors", label: "Authors", link: "/" },
+    { href: "#transient", label: "Login", link: "/login", className: "transient" },
+  ],
+};
+
+export const customTheme = {
+    button: {
+      color: {
+        orangeHover: "bg-[#ff8d4e] hover:bg-[#d3723e]",
+      },
+    },
+    input: {
+      colors: {
+        orangeFocus: "focus:ring-[#ff8d4e] focus:border-[#ff8d4e]",
+      },
+    },
+  };

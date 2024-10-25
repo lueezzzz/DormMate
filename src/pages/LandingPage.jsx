@@ -6,12 +6,13 @@ import About from '../components/About';
 import Feature from '../components/Feature';
 import Authors from '../components/Authors';
 import Footer from '@/components/Footer';
+import { customTheme } from '@/utils/mockData';
 
 
 const LandingPage = () => {
   return (
     <>
-      <Navbar />
+      <Navbar flowbiteTheme={customTheme}/>
       <Hero />
       <Feature />
       <About />

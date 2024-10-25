@@ -5,8 +5,10 @@ import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import { IoClose, IoMenu } from "react-icons/io5";
 import { Link, useLocation } from "react-router-dom";
+import { Button, Flowbite } from "flowbite-react";
+import { navConfig } from "@/utils/mockData";
 
-const Navbar = () => {
+const Navbar = ({ flowbiteTheme }) => {
   const [isDark, setIsDark] = useState(true);
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,6 +18,42 @@ const Navbar = () => {
   };
 
   const location = useLocation();
+
+  const getNavItems = (pathname) => {
+    return navConfig[pathname] || navConfig["/"];
+  };
+
+  const renderButton = () => {
+    if (location.pathname === "/") {
+      return (
+        <Toggle
+          checked={isDark}
+          onChange={({ target }) => setIsDark(target.checked)}
+          aria-label="Dark mode toggle"
+        />
+      );
+    } else if (location.pathname === "/login") {
+      return (
+        <Flowbite theme={flowbiteTheme}>
+          <Link to="/transient">
+            <Button color="orangeHover" className="text-white">
+              Transient
+            </Button>
+          </Link>
+        </Flowbite>
+      );
+    } else {
+      return (
+        <Flowbite theme={flowbiteTheme}>
+          <Link to="/login">
+            <Button color="orangeHover" className="text-white">
+              Login
+            </Button>
+          </Link>
+        </Flowbite>
+      );
+    }
+  };
 
   return (
     <header className="header">
@@ -43,46 +81,35 @@ const Navbar = () => {
         )}
 
         <div className={`nav-menu ${menuOpen ? "show-menu" : ""}`}>
-          <ul className="nav-links">
-            {location.pathname === "/" ? (
-              <>
-                <li>
-                  <a href="#home">Home</a>
-                </li>
-                <li>
-                  <a href="#about">About</a>
-                </li>
-                <li>
-                  <a href="#authors">Authors</a>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link to="/">
-                    <a href="#home">Home</a>
+          <ul
+            className={`nav-links ${
+              location.pathname !== "/"
+                ? `nav-links-${location.pathname.substring(1)}`
+                : ""
+            }`}
+          >
+            {getNavItems(location.pathname).map((item, index) => (
+              <li key={index}>
+                {item.link ? (
+                  <Link
+                    to={item.link}
+                    className={item.className ? item.className : ""}
+                  >
+                    <a href={item.href}>{item.label}</a>
                   </Link>
-                </li>
-                <Link to="/">
-                  <a href="#about">About</a>
-                </Link>
-                <Link to="/">
-                  <a href="#authors">Authors</a>
-                </Link>
-              </>
-            )}
+                ) : (
+                  <a href={item.href}>{item.label}</a>
+                )}
+              </li>
+            ))}
 
             <div className="nav-close" onClick={toggleMenu}>
               <IoClose />
             </div>
           </ul>
         </div>
-        <div className="color-toggle">
-          <Toggle
-            checked={isDark}
-            onChange={({ target }) => setIsDark(target.checked)}
-            aria-label="Dark mode toggle"
-          />
+        <div className="button-toggle">
+          {renderButton()}
         </div>
 
         <div className="nav-toggle" onClick={toggleMenu}>

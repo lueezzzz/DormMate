@@ -1,30 +1,22 @@
-import React from 'react';
-import Roof from '../assets/images/Roof.png';
-import EmptyLog from '../assets/images/EmptyLog.png';
+import React from "react";
+import Roof from "../assets/images/Roof.png";
+import EmptyLog from "../assets/images/EmptyLog.png";
+import { Flowbite, Button } from "flowbite-react";
 
 const FilePermit = () => {
+
   return (
-    <div className="container">
-      <div className="welcome-section">
-        <img src={Roof} alt="Welcome Logo" className="roof-image" />
-        <h1>Welcome,</h1>
-        <h2>Dormer Name</h2>
-        <div className="dorm-details">
-        <p>Current Dorm: <strong>Balay Lampirong</strong></p>
-        <p>Dorm Manager: <strong>Nida N. Belas</strong></p>
-        </div>
-        <div className="file-permit">
-        <button className="permit-button">File Permit</button>
-        </div>
+    <>
+      <div className="user-info">
+        <h2>Welcome, {}</h2>
       </div>
-
-      <div className="permit-logs">
-        <h3>Permit Logs</h3>
-        <img src={EmptyLog} alt="Empty Log" className="EmptyLog-image" />
-        <p>No permits have been added yet.</p>
+      <div className="dorm-info">
+        <h2>Current Dorm: {}</h2>
+        <h2>Dorm Manager: {}</h2>
       </div>
-    </div>
-  )
-}
+      <button className="file-permit-btn">File Permit </button>
+    </>
+  );
+};
 
-export default FilePermit
+export default FilePermit;

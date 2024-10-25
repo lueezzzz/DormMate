@@ -1,0 +1,53 @@
+.dormer-page {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    width: 1400px;
+    height: 100vh;
+ 
+}
+
+.file-permit {
+    margin-left: 100px;    
+    padding: 1rem;
+    
+}
+
+.permit-logs{
+    margin-right:120px;
+    height: 500px;
+    border: 1px solid black;
+    width: 500px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.file-permit-btn {
+  background-color: #ff8c52;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.file-permit-btn:hover{
+    background-color: #d3723e;
+    transition: all 0.3s linear;
+}
+
+
+
+
+@media screen and (max-width: 800px ){
+    .dormer-page{
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .file-permit{
+        margin-left: 0px;
+    }
+}

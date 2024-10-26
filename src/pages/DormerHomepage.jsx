@@ -5,7 +5,7 @@ import "../css/DormerPage.css";
 import PermitLogs from "@/components/PermitLogs";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { filePermit } from "@/utils/useFilePermit";
+import filePermit from "@/utils/useFilePermit";
 
 const DormerHomepage = () => {
   async function handleSubmit(permitData) {

@@ -1,10 +1,15 @@
 import React from "react";
-import { filePermit } from "@/utils/useFilePermit";
+import filePermit from "@/utils/useFilePermit";
+import getUserPermits from "@/utils/useGetUserPermits";
 
 export default function TestDormPage() {
   async function handleSubmit(permitData) {
-    const userInfo = await filePermit(permitData);
-    console.log(userInfo);
+    await filePermit(permitData);
+  }
+
+  async function handleGetPermits() {
+    const userPermits = await getUserPermits();
+    console.log(userPermits);
   }
   return (
     <>
@@ -13,11 +18,18 @@ export default function TestDormPage() {
         action=""
         onSubmit={(e) => {
           e.preventDefault();
-          handleSubmit({ type: "overnight", purpose: "wala lungz" });
+          handleSubmit({
+            type: "overnight",
+            purpose: "wala lungz",
+            randomProp: "hekhok",
+          });
         }}
       >
         <button type="submit">Submit</button>
       </form>
+      <button onClick={() => handleGetPermits()}>
+        get the permits of this user
+      </button>
     </>
   );
 }

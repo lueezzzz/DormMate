@@ -1,18 +1,21 @@
 import { auth } from "../firebase/auth";
 import { db } from "../firebase/db"
-import { doc, setDoc, collection, query, where, getDocs, addDoc, getDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 
-export async function filePermit(permitData) {
-
+export default async function filePermit(permitData) {
     const { uid } = auth.currentUser;
 
-    const permitCollectionRef = collection(db, "permits");
-    const newPermitDocRef = await addDoc(permitCollectionRef, permitData) //add the new permit to the db
+    // Object.defineProperty(permitData, "dormerID", { value: uid }) // attach dormer id property to the permit data
+    permitData = { ...permitData, dormerID: uid }
+    console.log(permitData);
 
-    const currUserDocRef = doc(db, "users", uid);
-    const currUserDocSnap = await getDoc(currUserDocRef);
-    const currUserDoc = currUserDocSnap.data() //get current user data
-    currUserDoc.permits = [...currUserDoc.permits, newPermitDocRef.id] //modify the permits data to append the new permit id
-    await setDoc(currUserDocRef, currUserDoc, { merge: true }) //set the new data on the doc
+    const permitCollectionRef = collection(db, "permits");
+    await addDoc(permitCollectionRef, permitData) //add the new permit to the db
+
+    // const userDocRef = doc(db, "users", uid);
+    // const userDocSnap = await getDoc(currUserDocRef);
+    // const userDoc = userDocSnap.data() //get current user data
+    // userDoc.permits.push(newPermitDocRef.id) //append the new permit id to the array of user permits
+    // await setDoc(userDocRef, userDoc, { merge: true }) //set the new data on the doc
     console.log("successfully added permit");
 }

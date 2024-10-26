@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import resolveRouteByLogin from "@/utils/resolveRouteByLogin";
 import { useState } from "react";
 import { Button, Label, Flowbite, TextInput } from "flowbite-react";
-import "../css/Login.css"
+import "../css/Login.css";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +16,8 @@ const LoginForm = () => {
   //you can use the return value which is a route to navigate to the next page
   async function handleLogin() {
     const route = await resolveRouteByLogin(email, password);
-    navigate(route);
+    // navigate(route);
+    navigate("/testDormer");
   }
 
   const customTheme = {

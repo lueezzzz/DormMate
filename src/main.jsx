@@ -6,7 +6,7 @@ import DormerHomepage from "./pages/DormerHomepage.jsx";
 import TransientView from "./pages/TransientView.jsx";
 import TransientSuccess from "./pages/TransientSuccess.jsx";
 import LoginPage from "./pages/Login.jsx";
-
+import TestDormPage from "./pages/TestDormerPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/testDormer",
+    element: <TestDormPage />,
   },
 ]);
 

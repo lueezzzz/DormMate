@@ -9,22 +9,18 @@ const PermitLogs = () => {
   const [user, isLoading] = useAuthState(auth);
 
   useEffect(() => {
-    const fetchPermits = async () => {
-      try {
-        const userPermits = await getUserPermits();
-        setPermits(userPermits);
-      } catch (error) {
-        console.error("Error fetching permits:", error);
-      }
-    };
-    if (isLoading) {
-      console.log("loading wait...");
-    } else {
+    if (!isLoading && user) {
       console.log("loading done!");
 
-      fetchPermits();
+      const unsubscribe = getUserPermits((updatedPermits) => {
+        setPermits(updatedPermits);
+      });
+
+      return () => unsubscribe();
+    } else if (isLoading) {
+      console.log("loading wait...");
     }
-  }, [isLoading]);
+  }, [isLoading, user]);
 
   return (
     <div className="permit-logs">
@@ -32,32 +28,34 @@ const PermitLogs = () => {
       <div className="log-list">
         {permits.length > 0 ? (
           permits.map((permit, index) => (
-            <div key={index} className="log-item">
-              <p>
-                <strong>Permit Type:</strong> {permit.permitType}
-              </p>
-              <p>
-                <strong>Time Out:</strong> {permit.timeOut}
-              </p>
-              <p>
-                <strong>Destination:</strong> {permit.destination}
-              </p>
-              <p>
-                <strong>Room Number:</strong> {permit.roomNumber}
-              </p>
-              <p>
-                <strong>Emergency Contact:</strong> {permit.emergencyContact}
-              </p>
-              <p>
-                <strong>Return Date:</strong> {permit.returnDate}
-              </p>
-              <p>
-                <strong>Purpose:</strong> {permit.purpose}
-              </p>
+            <div key={index} className="permit-card">
+              <div className="permit-icon">
+                <span>
+                  {permit.permitType
+                    .split(" ")
+                    .map((word) => word[0])
+                    .join("")
+                    .toUpperCase()}
+                </span>
+              </div>
+              <div className="permit-info">
+                <h3>{permit.permitType}</h3>
+                <p>
+                  Date Filed: {new Date(permit.dateFiled).toLocaleDateString()}{" "}
+                  @ {new Date(permit.dateFiled).toLocaleTimeString()}
+                </p>
+              </div>
+              <div
+                className={`permit-status ${
+                  permit.permitStatus ? permit.permitStatus.toLowerCase() : ""
+                }`}
+              >
+                {permit.permitStatus || "Status Unknown"}
+              </div>
             </div>
           ))
         ) : (
-          <p>No permits found.</p>
+          <p className="no-permits-message">No permits available</p>
         )}
       </div>
     </div>

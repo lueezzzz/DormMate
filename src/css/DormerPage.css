@@ -16,10 +16,80 @@
 .permit-logs{
     margin-right:120px;
     height: 500px;
-    border: 1px solid black;
+    border: 1px solid gray;
     width: 500px;
     border-radius: 10px;
     padding: 10px;
+    overflow-y: auto;
+}
+
+.permit-logs h2 {
+  font-size: 1.5rem;
+  color: #ff7a00; 
+  margin-bottom: 1rem;
+}
+
+.log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.permit-card {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  gap: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.permit-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7f7;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff7a00; 
+}
+
+.permit-info {
+  flex-grow: 1;
+}
+
+.permit-info h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.permit-info p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #555;
+}
+
+.permit-status {
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.permit-status.pending {
+  color: #f39c12; 
+}
+
+.permit-status.accepted {
+  color: #27ae60; 
+}
+
+.permit-status.rejected {
+  color: #e74c3c; 
 }
 
 .file-permit-btn {

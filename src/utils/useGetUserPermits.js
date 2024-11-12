@@ -1,16 +1,23 @@
 import { auth } from "../firebase/auth";
-import { db } from "../firebase/db"
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../firebase/db";
+import { collection, query, where, onSnapshot } from "firebase/firestore";
 
+export default function getUserPermits(onPermitsChange) {
+  const { uid } = auth.currentUser;
+  const getPermitsQuery = query(
+    collection(db, "permits"),
+    where("dormerID", "==", uid)
+  );
 
-export default async function getUserPermits() {
-    const { uid } = auth.currentUser;
-    const userPermits = []
-    const getPermitsQuery = query(collection(db, "permits"), where("dormerID", "==", uid));
-
-    const querySnapshot = await getDocs(getPermitsQuery);
+  // Using onSnapshot to listen for real-time updates
+  const unsubscribe = onSnapshot(getPermitsQuery, (querySnapshot) => {
+    const userPermits = [];
     querySnapshot.forEach((doc) => {
-        userPermits.push(doc.data())
+      userPermits.push(doc.data());
     });
-    return userPermits;
+
+    onPermitsChange(userPermits);
+  });
+
+  return unsubscribe;
 }

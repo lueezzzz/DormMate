@@ -4,6 +4,18 @@ import filePermit from "@/utils/useFilePermit";
 
 const FilePermitModal = ({ openModal, setOpenModal }) => {
 
+  const [formData, setFormData] = useState({
+    permitType: "",
+    timeOut: "",
+    destination: "",
+    roomNumber: "",
+    emergencyContact: "",
+    returnDate: "",
+    purpose: "",
+    dateFiled: "",
+    permitStatus: "Pending", 
+  });
+
   const onCloseModal = () => {
     setOpenModal(false);
     setFormData({
@@ -14,18 +26,10 @@ const FilePermitModal = ({ openModal, setOpenModal }) => {
       emergencyContact: "",
       returnDate: "",
       purpose: "",
+      dateFiled: "",
+      permitStatus: "Pending", 
     });
   };
-  
-  const [formData, setFormData] = useState({
-    permitType: "",
-    timeOut: "",
-    destination: "",
-    roomNumber: "",
-    emergencyContact: "",
-    returnDate: "",
-    purpose: "",
-  });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -37,9 +41,19 @@ const FilePermitModal = ({ openModal, setOpenModal }) => {
 
   async function handleSubmitPermit(e) {
     e.preventDefault();
+
+    const currentDate = new Date().toISOString();
+    const updatedFormData = { ...formData, dateFiled: currentDate };
+
+
+    updatedFormData.permitStatus = updatedFormData.permitStatus || "Pending"; 
+
+    console.log("Submitting Permit Data:", updatedFormData);
+
     try {
-      await filePermit(formData);
+      await filePermit(updatedFormData);
       console.log("Permit filed successfully");
+      onCloseModal();
     } catch (error) {
       console.error("Error filing permit:", error);
     }
@@ -67,11 +81,12 @@ const FilePermitModal = ({ openModal, setOpenModal }) => {
                   value={formData.permitType}
                   onChange={handleInputChange}
                   className="w-full border rounded px-2 py-1 bg-gray-100"
+                  required
                 >
                   <option value="">Select Type</option>
-                  <option value="late-night">Late Night</option>
-                  <option value="overnight">Overnight</option>
-                  <option value="weekend">Weekend</option>
+                  <option value="Late Permit">Late Permit</option>
+                  <option value="Overnight Permit">Overnight Permit</option>
+                  <option value="Weekend Permit">Weekend Permit</option>
                 </select>
               </div>
               <div>
@@ -84,6 +99,7 @@ const FilePermitModal = ({ openModal, setOpenModal }) => {
                   value={formData.timeOut}
                   onChange={handleInputChange}
                   className="w-full border rounded px-2 py-1 bg-gray-100"
+                  required
                 />
               </div>
             </div>
@@ -99,6 +115,7 @@ const FilePermitModal = ({ openModal, setOpenModal }) => {
                 onChange={handleInputChange}
                 className="w-full border rounded px-2 py-1 bg-gray-100"
                 placeholder="Value"
+                required
               />
             </div>
 
@@ -116,6 +133,7 @@ const FilePermitModal = ({ openModal, setOpenModal }) => {
                   min="1"
                   max="100"
                   placeholder="Enter room number"
+                  required
                 />
               </div>
               <div>
@@ -130,6 +148,7 @@ const FilePermitModal = ({ openModal, setOpenModal }) => {
                   onChange={handleInputChange}
                   className="w-full border rounded px-2 py-1 bg-gray-100"
                   placeholder="Value"
+                  required
                 />
               </div>
             </div>
@@ -144,6 +163,7 @@ const FilePermitModal = ({ openModal, setOpenModal }) => {
                 value={formData.returnDate}
                 onChange={handleInputChange}
                 className="w-full border rounded px-2 py-1 bg-gray-100"
+                required
               />
             </div>
 
@@ -158,6 +178,7 @@ const FilePermitModal = ({ openModal, setOpenModal }) => {
                 className="w-full border rounded px-2 py-1 bg-gray-100"
                 placeholder="Value"
                 rows="3"
+                required
               ></textarea>
             </div>
 

@@ -16,8 +16,8 @@ const LoginForm = () => {
   //you can use the return value which is a route to navigate to the next page
   async function handleLogin() {
     const route = await resolveRouteByLogin(email, password);
-    // navigate(route);
-    navigate("/testDormer");
+    navigate(route);
+    // navigate("/testDormer");
   }
 
   const customTheme = {

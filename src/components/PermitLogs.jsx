@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../css/DormerPage.css";
 import getUserPermits from "@/utils/useGetUserPermits";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/firebase/auth";
 
 const PermitLogs = () => {
-
   const [permits, setPermits] = useState([]);
+  const [user, isLoading] = useAuthState(auth);
 
   useEffect(() => {
-
     const fetchPermits = async () => {
       try {
         const userPermits = await getUserPermits();
@@ -16,8 +17,14 @@ const PermitLogs = () => {
         console.error("Error fetching permits:", error);
       }
     };
-    fetchPermits();
-  }, []);
+    if (isLoading) {
+      console.log("loading wait...");
+    } else {
+      console.log("loading done!");
+
+      fetchPermits();
+    }
+  }, [isLoading]);
 
   return (
     <div className="permit-logs">

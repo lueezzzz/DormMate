@@ -23,8 +23,11 @@ const AdminPermits = () => {
     if (!isLoading && user) {
       console.log("loading done!");
       (async () => {
-        const data = await getDormerPermits();
-        setPermits((p) => [...p, data]);
+        const unsubscribe = getDormerPermits((updatedPermits) => {
+          setPermits(updatedPermits);
+        });
+
+        return () => unsubscribe();
       })();
     } else if (isLoading) {
       console.log("loading wait...");

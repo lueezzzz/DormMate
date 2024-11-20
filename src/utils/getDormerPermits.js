@@ -1,9 +1,9 @@
 import { auth } from "../firebase/auth";
 import { db } from "../firebase/db";
-import { collection, query, where, getDocs, doc, getDoc } from "firebase/firestore";
+import { collection, query, where, getDocs, doc, getDoc, onSnapshot } from "firebase/firestore";
 import getDormers from "./getDormers";
 
-export default async function getDormerPermits() {
+export default async function getDormerPermits(onPermitsChange) {
     const { uid } = auth.currentUser;
     const dormManagerDocRef = doc(db, "users", uid);
     const docSnap = await getDoc(dormManagerDocRef)
@@ -20,10 +20,21 @@ export default async function getDormerPermits() {
         collection(db, "permits"),
         where("dormerID", "in", dormersID)
     );
-    const dormerPermits = []
-    const querySnapshot = await getDocs(getPermitsQuery);
-    querySnapshot.forEach((doc) => {
-        dormerPermits.push(doc.data())
+    // const dormerPermits = []
+    // const querySnapshot = await getDocs(getPermitsQuery);
+    // querySnapshot.forEach((doc) => {
+    //     dormerPermits.push(doc.data())
+    // });
+    // return dormerPermits;
+    const unsubscribe = onSnapshot(getPermitsQuery, (querySnapshot) => {
+        const dormerPermits = [];
+        querySnapshot.forEach((doc) => {
+            dormerPermits.push(doc.data());
+        });
+        console.log("user permits are: ", dormerPermits);
+
+        onPermitsChange(dormerPermits);
     });
-    return dormerPermits;
+
+    return unsubscribe;
 }

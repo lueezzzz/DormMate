@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import "../index.css";
 import { Button } from "@/components/ui/button";
@@ -10,14 +10,34 @@ import {
 
 import PermitCard from "@/components/PermitCard";
 import { permitsMockData } from "@/utils/mockData";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/firebase/auth";
+import getDormerPermits from "@/utils/getDormerPermits";
 
 const AdminPermits = () => {
   const [permitType, setPermitType] = useState("Late Night");
+  const [permits, setPermits] = useState([]);
+  const [user, isLoading] = useAuthState(auth);
+
+  useEffect(() => {
+    if (!isLoading && user) {
+      console.log("loading done!");
+      (async () => {
+        const data = await getDormerPermits();
+        setPermits((p) => [...p, data]);
+      })();
+    } else if (isLoading) {
+      console.log("loading wait...");
+    }
+  }, [isLoading, user]);
+
   const handleChangeView = (viewType) => {
     if (permitType != viewType) {
       setPermitType(viewType);
     }
   };
+  console.log("here are the permits sire!", permits);
+
   return (
     <>
       <ResizablePanelGroup
@@ -62,7 +82,7 @@ const AdminPermits = () => {
           .map((permit) => (
             <li key={permit.id}>
               <PermitCard
-                name={permit.name}
+                name={permit.purpose}
                 room={permit.room}
                 status={permit.status}
               />

@@ -29,7 +29,7 @@ export default async function getDormerPermits(onPermitsChange) {
     const unsubscribe = onSnapshot(getPermitsQuery, (querySnapshot) => {
         const dormerPermits = [];
         querySnapshot.forEach((doc) => {
-            dormerPermits.push(doc.data());
+            dormerPermits.push({ ...doc.data(), ...{ permitID: doc.id } });
         });
         console.log("user permits are: ", dormerPermits);
 

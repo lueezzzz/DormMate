@@ -1,7 +1,7 @@
 import { db } from "../firebase/db";
 import { collection, query, where, getDocs } from "firebase/firestore";
 
-export default async function getDormers(dorm) {
+export default async function getDormersByUID(dorm) {
     const dormersID = []
     const getDormersQuery = query(
         collection(db, "users"),

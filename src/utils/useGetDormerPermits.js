@@ -1,7 +1,7 @@
 import { auth } from "../firebase/auth";
 import { db } from "../firebase/db";
 import { collection, query, where, getDocs, doc, getDoc, onSnapshot } from "firebase/firestore";
-import getDormers from "./getDormers";
+import getDormersByUID from "./useGetDormersByUID";
 
 export default async function getDormerPermits(onPermitsChange) {
     const { uid } = auth.currentUser;
@@ -13,7 +13,7 @@ export default async function getDormerPermits(onPermitsChange) {
     } else {
         console.log("Dorm manager account does not exist!");
     }
-    const dormersID = await getDormers("balayLampirong")
+    const dormersID = await getDormersByUID("balayLampirong")
     console.log("dormers id are: ", dormersID);
 
     const getPermitsQuery = query(

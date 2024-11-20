@@ -12,7 +12,7 @@ import PermitCard from "@/components/PermitCard";
 import { permitsMockData } from "@/utils/mockData";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/auth";
-import getDormerPermits from "@/utils/getDormerPermits";
+import getDormerPermits from "@/utils/useGetDormerPermits";
 
 const AdminPermits = () => {
   const [permitType, setPermitType] = useState("Late Night");

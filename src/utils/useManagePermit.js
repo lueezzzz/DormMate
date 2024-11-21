@@ -1,6 +1,10 @@
 import { db } from "../firebase/db";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
+/*
+usage:
+await managePermit([the permit ID], [the new permit status if approved or not])
+*/
 
 export default async function managePermit(permitID, newPermitStatus) {
     const permitDocRef = doc(db, "permits", permitID);
@@ -11,7 +15,6 @@ export default async function managePermit(permitID, newPermitStatus) {
             ...docSnap.data(), ...{ newPermitStatus: newPermitStatus }
         });
     } else {
-        // docSnap.data() will be undefined in this case
         console.log("No such document!");
     }
 

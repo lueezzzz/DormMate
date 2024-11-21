@@ -12,7 +12,6 @@ export default async function assignDormerRoom(dormerUID, newRoomNumber) {
             ...docSnap.data(), ...{ roomNumber: newRoomNumber }
         });
     } else {
-        // docSnap.data() will be undefined in this case
         console.log("No such document!");
     }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import check from "../assets/images/check.png"
+import { Link } from "react-router-dom";
 
 const SuccessMessage = () => {
   return (
@@ -14,7 +15,9 @@ const SuccessMessage = () => {
             Thank you for your reservation.
             We have sent your booking information to your email address.  
           </p>
-          <button className="cta-btn">Go to Home</button>
+          <Link to="/">
+            <button className="cta-btn">Go to Home</button>
+          </Link>
         </div>
       </section>
     </>

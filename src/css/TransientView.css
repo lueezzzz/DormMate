@@ -21,3 +21,8 @@
   margin-bottom: 1.5rem;
   color: gray;
 }
+
+.booking-success-message{
+    top: 200px;
+    margin-bottom: 300px;
+}

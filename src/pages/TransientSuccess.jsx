@@ -1,7 +1,9 @@
 import React from 'react'
 import Navbar from '../components/Navbar';
-import "../index.css"
+import Footer from "@/components/Footer";
+import "../css/TransientView.css"
 import SuccessMessage from '@/components/SuccessMessage';
+
 
 
 const TransientSuccess = () => {
@@ -9,6 +11,7 @@ const TransientSuccess = () => {
     <>
       <Navbar />
       <SuccessMessage />
+      <Footer />
     </>
   );
 }

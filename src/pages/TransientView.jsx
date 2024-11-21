@@ -4,14 +4,14 @@ import Headline from "@/components/Headline";
 import { dorms } from "@/utils/mockData";
 import DormViewCard from "@/components/DormViewCard";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import Navbar from '../components/Navbar';
 import "../css/TransientView.css"
 
 const TransientView = () => {
   return (
     <>
       <Navbar />
-      <section className="transient-view section-center ">
+      <section className="transient-view section-center">
         <Headline
           header="Welcome UPV Guests!"
           subHeader="Browse Available Dormitories & Book Your Stay"

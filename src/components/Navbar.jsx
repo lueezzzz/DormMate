@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import mainLogo from "../assets/images/MainLogo.png";
 import "../css/Navbar.css";
+import "../css/Buttons.css"
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import { IoClose, IoMenu } from "react-icons/io5";
 import { Link, useLocation } from "react-router-dom";
-import { Button, Flowbite } from "flowbite-react";
 import { navConfig } from "@/utils/mockData";
+import Button from "./Button";
 
-const Navbar = ({ flowbiteTheme }) => {
+
+const Navbar = () => {
   const [isDark, setIsDark] = useState(true);
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,6 +26,9 @@ const Navbar = ({ flowbiteTheme }) => {
   };
 
   const renderButton = () => {
+
+    console.log("The pathname is: ",  location.pathname);
+
     if (location.pathname === "/") {
       return (
         <Toggle
@@ -34,26 +39,24 @@ const Navbar = ({ flowbiteTheme }) => {
       );
     } else if (location.pathname === "/login") {
       return (
-        <Flowbite theme={flowbiteTheme}>
+
           <Link to="/transient">
-            <Button color="orangeHover" className="text-white">
-              Transient
-            </Button>
+            <Button className="transient-btn text-white" text="Transient"/>
           </Link>
-        </Flowbite>
+
       );
     } else {
       return (
-        <Flowbite theme={flowbiteTheme}>
-          <Link to="/login">
-            <Button color="orangeHover" className="text-white">
-              Login
-            </Button>
-          </Link>
-        </Flowbite>
+        <Link to="/login">
+          <Button
+            className="login-btn text-white"
+            text="Login"
+          />
+        </Link>
       );
     }
   };
+
 
   return (
     <header className="header">
@@ -70,12 +73,12 @@ const Navbar = ({ flowbiteTheme }) => {
         ) : (
           <>
             <Link to="/">
-              <a href="#home">
+              
                 <div className="logo">
                   <img src={mainLogo} />
                   <h1 className="header1">DormMate</h1>
                 </div>
-              </a>
+              
             </Link>
           </>
         )}
@@ -95,7 +98,7 @@ const Navbar = ({ flowbiteTheme }) => {
                     to={item.link}
                     className={item.className ? item.className : ""}
                   >
-                    <a href={item.href}>{item.label}</a>
+                    {item.label}
                   </Link>
                 ) : (
                   <a href={item.href}>{item.label}</a>

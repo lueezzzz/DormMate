@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../index.css";
 import Headline from "@/components/Headline";
-import { dorms } from "@/utils/mockData";
 import DormViewCard from "@/components/DormViewCard";
 import Footer from "@/components/Footer";
 import Navbar from '../components/Navbar';
 import "../css/TransientView.css"
+import getDorms from "@/utils/useGetDorms";
 
 const TransientView = () => {
+
+  const [dorms, setDorms] = useState([]);
+  
+  useEffect(()=>{
+    const fetchDormData = async () => {
+      try {
+        const dormData = await getDorms();
+        setDorms(dormData);
+      } catch (error) {
+        
+      } 
+    };
+
+    fetchDormData();
+  }, [])
+
   return (
     <>
       <Navbar />
@@ -18,11 +34,11 @@ const TransientView = () => {
         />
         <div className="mx-20 mb-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {dorms.map((dorm) => (
+            {dorms.map((dorm, index) => (
               <DormViewCard
-                title={dorm.title}
-                image={dorm.image}
-                avl_rooms={dorm.avl_rooms}
+                title={dorm.name}
+                avl_rooms={dorm.availRooms}
+                key={index}
               />
             ))}
           </div>

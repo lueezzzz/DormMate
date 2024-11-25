@@ -107,16 +107,6 @@ export const socialLinks = [
   },
 ];
 
-export const dorms = [
-  { title: "Balay Madyaas", image: dorm1, avl_rooms: "15" },
-  { title: "Balay Kanlaon", image: dorm1, avl_rooms: "10" },
-  { title: "Balay Lampirong", image: dorm1, avl_rooms: "10" },
-  { title: "Balay Gumamela", image: dorm1, avl_rooms: "10" },
-  { title: "Balay Apitong", image: dorm1, avl_rooms: "12" },
-  { title: "Balay Miagos", image: dorm1, avl_rooms: "10" },
-  { title: "International Dormitory", image: dorm1, avl_rooms: "10" },
-  { title: "Balay Ilonggo", image: dorm1, avl_rooms: "13" },
-];
 
 export const navConfig = {
   "/": [
@@ -136,6 +126,14 @@ export const navConfig = {
     { href: "#authors", label: "Authors", link: "/" },
     { href: "#transient", label: "Login", link: "/login", className: "transient" },
   ],
+
+    "/transient-booking": [
+    { href: "#home", label: "Home", link: "/" },
+    { href: "#about", label: "About", link: "/" },
+    { href: "#authors", label: "Authors", link: "/" },
+    { href: "#transient", label: "Login", link: "/login", className: "transient" },
+  ],
+  
 };
 
 export const customTheme = {

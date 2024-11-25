@@ -107,6 +107,11 @@
   font-weight: bold;
 }
 
+.nav-links-transient-booking{
+  display: none;
+}
+
+
 .nav-links-login a:hover {
   color: #f98c5a;
   transition: all 0.3s linear;
@@ -162,6 +167,11 @@
     display: flex;
     
   }
+
+  .nav-links-transient-booking{
+    display: flex;
+}
+
 
   .nav-links-login a {
     color: white;

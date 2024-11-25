@@ -16,6 +16,7 @@ import getDormerPermits from "@/utils/useGetDormerPermits";
 import assignDormerRoom from "@/utils/useAssignDormerRoom";
 
 const AdminPermits = () => {
+  
   const [permitType, setPermitType] = useState("Late Night");
   const [permits, setPermits] = useState([]);
   const [user, isLoading] = useAuthState(auth);

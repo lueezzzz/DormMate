@@ -8,6 +8,7 @@ import TransientSuccess from "./pages/TransientSuccess.jsx";
 import TransientBooking from "./pages/TransientBooking.jsx";
 import LoginPage from "./pages/Login.jsx";
 import TestDormPage from "./pages/TestDormerPage.jsx";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 const router = createBrowserRouter([
   {

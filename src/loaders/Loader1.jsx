@@ -1,12 +1,12 @@
 import React from "react";
-import { PushSpinner } from "react-spinners-kit";
+import { ClassicSpinner } from "react-spinners-kit";
 
 const Loader1 = () => {
   return (
     <div className="h-screen flex items-center justify-center">
-      <PushSpinner size={50} color="#000000" />
+      <ClassicSpinner size={50} color="#ff8d4e" />
     </div>
   );
 };
 
-export default Loader;
+export default Loader1;

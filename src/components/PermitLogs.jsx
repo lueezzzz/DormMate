@@ -1,33 +1,29 @@
-import React, { useEffect, useState } from "react";
-import "../css/DormerPage.css";
-import getUserPermits from "@/utils/useGetUserPermits";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/firebase/auth";
+import React from "react";
 
-const PermitLogs = () => {
-  const [permits, setPermits] = useState([]);
-  const [user, isLoading] = useAuthState(auth);
+const PermitLogs = ({ permits }) => {
 
-  useEffect(() => {
-    if (!isLoading && user) {
-      console.log("loading done!");
-
-      const unsubscribe = getUserPermits((updatedPermits) => {
-        setPermits(updatedPermits);
-      });
-
-      return () => unsubscribe();
-    } else if (isLoading) {
-      console.log("loading wait...");
+  const sortedPermits = permits.sort((a, b) => {
+    if (a.permitStatus === "Pending" && b.permitStatus !== "Pending") {
+      return -1; 
     }
-  }, [isLoading, user]);
+    if (a.permitStatus !== "Pending" && b.permitStatus === "Pending") {
+      return 1; 
+    }
+    if (a.permitStatus === "Rejected" && b.permitStatus !== "Rejected") {
+      return 1; 
+    }
+    if (a.permitStatus !== "Rejected" && b.permitStatus === "Rejected") {
+      return -1; 
+    }
+    return 0; 
+  });
 
   return (
     <div className="permit-logs">
       <h2>Permit Logs</h2>
       <div className="log-list">
-        {permits.length > 0 ? (
-          permits.map((permit, index) => (
+        {sortedPermits.length > 0 ? (
+          sortedPermits.map((permit, index) => (
             <div key={index} className="permit-card">
               <div className="permit-icon">
                 <span>
@@ -55,7 +51,7 @@ const PermitLogs = () => {
             </div>
           ))
         ) : (
-          <p className="no-permits-message">No permits available</p>
+          <p className="text-center">No permits available</p>
         )}
       </div>
     </div>

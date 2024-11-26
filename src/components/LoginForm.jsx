@@ -2,22 +2,28 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import resolveRouteByLogin from "@/utils/resolveRouteByLogin";
 import { useState } from "react";
-import { Button, Label, Flowbite, TextInput } from "flowbite-react";
+import { Label, Flowbite, TextInput } from "flowbite-react";
+import { ClassicSpinner } from "react-spinners-kit";
 import "../css/Login.css";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loggingIn, setIsLoggingIn] = useState(false);
   const navigate = useNavigate();
 
-  //for login page, create handler function and you can get the corresponding route by using the resolveRouteByLogin function
-  //params are email and password from input
-  //don't forget to add `await` before function call and add `async` to the handler function
-  //you can use the return value which is a route to navigate to the next page
   async function handleLogin() {
-    const route = await resolveRouteByLogin(email, password);
-    navigate(route);
-    // navigate("/testDormer");
+    setIsLoggingIn(true); 
+    try {
+      const route = await resolveRouteByLogin(email, password);
+      navigate(route);
+    } catch (error) {
+      console.error("Login failed:", error);
+    } finally {
+      setIsLoggingIn(false); 
+    }
   }
 
   const customTheme = {
@@ -47,12 +53,13 @@ const LoginForm = () => {
               <div className="email-label">
                 <Label htmlFor="email" value="Your UP Mail" />
               </div>
-              <TextInput
+              <Input
                 id="email"
                 size={100}
                 value={email}
                 placeholder="name@up.edu.ph"
                 onChange={(e) => setEmail(e.target.value)}
+                className="bg-gray-100 border-none"
                 required
               />
             </div>
@@ -61,11 +68,13 @@ const LoginForm = () => {
               <div className="password-label">
                 <Label htmlFor="password" value="Your Password" />
               </div>
-              <TextInput
+              <Input
                 id="password"
                 type="password"
+                placeholder="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                className="bg-gray-100"
                 required
               />
             </div>
@@ -77,10 +86,14 @@ const LoginForm = () => {
                   e.preventDefault();
                   handleLogin();
                 }}
-                color="orangeHover"
-                className="text-white w-[100%]"
+                className="bg-[#ff8d4e] hover:bg-[#d3723e] text-white w-[100%] "
+                disabled={loggingIn}
               >
-                Login
+                {loggingIn ? (
+                  <ClassicSpinner size={20} color="white" />
+                ) : (
+                  "Login"
+                )}
               </Button>
             </div>
           </form>

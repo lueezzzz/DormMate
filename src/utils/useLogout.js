@@ -1,17 +1,23 @@
-import { auth, unsubscribeObserver } from "../firebase/auth";
 import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { auth, unsubscribeObserver } from "../firebase/auth";
 
-function logOut() {
-    signOut(auth).then(() => {
-        //do stuff here if needed 
-        console.log("user logged out");
-        unsubscribeObserver()
-        //route to home
-    }).catch((error) => {
-        //do stuff when error happens
+function useLogOut() {
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    signOut(auth)
+      .then(() => {
+        console.log("User logged out");
+        unsubscribeObserver(); 
+        navigate("/"); 
+      })
+      .catch((error) => {
         console.log(error);
+      });
+  };
 
-    })
+  return logOut;
 }
 
-export default logOut;
+export default useLogOut;

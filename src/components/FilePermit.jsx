@@ -1,25 +1,28 @@
 import React, { useState } from "react";
-import Roof from "../assets/images/Roof.png";
-import EmptyLog from "../assets/images/EmptyLog.png";
-import { Flowbite, Button } from "flowbite-react";
 import FilePermitModal from "@/modals/FilePermitModal";
 
-const FilePermit = () => {
+import useLogOut from "@/utils/useLogout";
+
+const FilePermit = ({ userDetails }) => {
   const [openPermit, setOpenPermit] = useState(false);
-  
+  const logOut = useLogOut();
+
+
   return (
     <>
       <div className="user-info">
-        <h2>Welcome, {}</h2>
+        <h2>
+          Welcome, {userDetails.firstName} {userDetails.lastName}
+        </h2>
+        <h2>Current Dorm: {userDetails.userDorm}</h2>
+        <h2>Room Number: {userDetails.roomNumber}</h2>
+        <button className="file-permit-btn" onClick={() => setOpenPermit(true)}>
+          File Permit
+        </button>
+        <button className="file-permit-btn" onClick={logOut}>Logout</button>
       </div>
-      <div className="dorm-info">
-        <h2>Current Dorm: {}</h2>
-        <h2>Dorm Manager: {}</h2>
-      </div>
-      <button className="file-permit-btn" onClick={() => setOpenPermit(true)}>
-        File Permit
-      </button>
-      <FilePermitModal openModal={openPermit} setOpenModal={setOpenPermit} />
+
+      <FilePermitModal openModal={openPermit} setOpenModal={setOpenPermit}  userDetails={userDetails}/>
     </>
   );
 };

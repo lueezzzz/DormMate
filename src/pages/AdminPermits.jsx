@@ -7,7 +7,8 @@ import { auth } from "@/firebase/auth";
 import getDormerPermits from "@/utils/useGetDormerPermits";
 import PermitModal from "@/modals/PermitModal";
 import Loader1 from "@/loaders/Loader1";
-import SideBar from "@/components/SideBar";
+import useLogOut from "@/utils/useLogout";
+
 
 const AdminPermits = () => {
   const [permitType, setPermitType] = useState("Late Permit");
@@ -17,6 +18,8 @@ const AdminPermits = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
+
+  const logOut = useLogOut();
 
   useEffect(() => {
     if (!isLoading && user) {
@@ -51,7 +54,6 @@ const AdminPermits = () => {
 
   return (
     <>
-      
       {isFetching ? (
         <Loader1 />
       ) : (
@@ -106,20 +108,19 @@ const AdminPermits = () => {
               permits
                 .filter((permit) => permit.permitType === permitType)
                 .sort((a, b) => {
-
                   if (
                     a.permitStatus === "Pending" &&
                     b.permitStatus !== "Pending"
                   ) {
-                    return -1; 
+                    return -1;
                   }
                   if (
                     a.permitStatus !== "Pending" &&
                     b.permitStatus === "Pending"
                   ) {
-                    return 1; 
+                    return 1;
                   }
-                  return 0; 
+                  return 0;
                 })
                 .slice(0, showMore ? permits.length : 2)
                 .map((permit, index) => (

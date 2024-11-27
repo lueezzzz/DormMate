@@ -80,6 +80,10 @@ const LoginForm = () => {
             </div>
 
             <div>
+              forgot password?
+            </div>
+
+            <div>
               <Button
                 type="submit"
                 onClick={(e) => {

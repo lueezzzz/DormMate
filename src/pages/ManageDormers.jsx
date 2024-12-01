@@ -12,7 +12,7 @@ import { db } from "@/firebase/db";
 import AddDormers from "@/modals/AddDormers";
 import getDormers from "@/utils/useGetDormers";
 import removeDormerByUID from "@/utils/useRemoveDormerByUID";
-import addDormer from "@/utils/useSignUp";
+import signUpDormer from "@/utils/useSignUp";
 import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -95,7 +95,7 @@ const ManageDormers = () => {
     const { email, password, roomNumber, lastName, firstName } = formData;
 
     try {
-      const dormer = await addDormer(email, password);
+      const dormer = await signUpDormer(email, password);
       const docRef = await addDoc(collection(db, "users"), {
         email,
         userDorm: adminDorm,

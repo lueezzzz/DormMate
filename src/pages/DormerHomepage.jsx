@@ -12,6 +12,8 @@ import getUserPermits from "@/utils/useGetUserPermits";
 import Loader1 from "@/loaders/Loader1";
 
 const DormerHomepage = () => {
+
+  
   const [user, isLoading] = useAuthState(auth);
   const [userDetails, setUserDetails] = useState(null);
   const [permits, setPermits] = useState([]);

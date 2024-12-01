@@ -13,7 +13,7 @@ import AddDormers from "@/modals/AddDormers";
 import getDormers from "@/utils/useGetDormers";
 import removeDormerByUID from "@/utils/useRemoveDormerByUID";
 import signUpDormer from "@/utils/useSignUp";
-import { addDoc, collection, doc, getDoc } from "firebase/firestore";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -96,7 +96,7 @@ const ManageDormers = () => {
 
     try {
       const dormer = await signUpDormer(email, password);
-      const docRef = await addDoc(collection(db, "users"), {
+      const docRef = await setDoc(doc(db, "users", dormer.uid), {
         email,
         userDorm: adminDorm,
         isAdmin: false,
@@ -104,7 +104,7 @@ const ManageDormers = () => {
         firstName,
         lastName,
       });
-      console.log("Dormer added successfully:", docRef.id);
+      console.log("Dormer added successfully:", dormer.uid);
       setIsDialogOpen(false);
     } catch (error) {
       console.error("Error adding dormer:", error);

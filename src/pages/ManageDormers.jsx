@@ -10,6 +10,7 @@ import { auth } from "@/firebase/auth";
 import { db } from "@/firebase/db";
 import getDormers from "@/utils/useGetDormers";
 import getDormersByUID from "@/utils/useGetDormersByUID";
+import removeDormerByUID from "@/utils/useRemoveDormerByUID";
 import { doc, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -17,11 +18,9 @@ import { useAuthState } from "react-firebase-hooks/auth";
 const ManageDormers = () => {
   const [isFetching, setIsFetching] = useState({
     adminDorm: false,
-    dormersUID: false,
     dormerDetails: false,
   });
 
-  const [dormerUID, setDormerUID] = useState([]);
   const [user, isLoading] = useAuthState(auth);
   const [dormers, setDormers] = useState([]);
 
@@ -29,7 +28,7 @@ const ManageDormers = () => {
     if (!isLoading && user) {
       let unsubscribe;
 
-      const fetchAdminAndDormeruID = async () => {
+      const fetchAdminAndDormers = async () => {
         setIsFetching((prev) => ({ ...prev, adminDorm: true }));
         try {
           const adminRef = doc(db, "users", user.uid);
@@ -38,9 +37,7 @@ const ManageDormers = () => {
 
           if (adminDocSnap.exists()) {
             adminDorm = adminDocSnap.data().userDorm;
-
             fetchDormers(adminDorm);
-            fetchDormersUID(adminDorm);
           } else {
             console.error("DNE");
           }
@@ -48,18 +45,6 @@ const ManageDormers = () => {
           console.log("Error: ", error);
         } finally {
           setIsFetching((prev) => ({ ...prev, adminDorm: false }));
-        }
-      };
-
-      const fetchDormersUID = async (dorm) => {
-        setIsFetching((prev) => ({ ...prev, dormersUID: true }));
-        try {
-          const uID = await getDormersByUID(dorm);
-          setDormerUID(uID);
-        } catch (error) {
-          console.error("Error fetching");
-        } finally {
-          setIsFetching((prev) => ({ ...prev, dormersUID: false }));
         }
       };
 
@@ -74,7 +59,7 @@ const ManageDormers = () => {
         }
       };
 
-      fetchAdminAndDormeruID();
+      fetchAdminAndDormers();
 
       return () => {
         if (unsubscribe) {
@@ -83,6 +68,15 @@ const ManageDormers = () => {
       };
     }
   }, [isLoading, user]);
+
+  const handleRemoveDormer = async (dormerUID) => {
+    try {
+      await removeDormerByUID(dormerUID);
+      console.log("Removed dormer");
+    } catch {
+      console.log("Error removing");
+    }
+  };
 
   return (
     <section>
@@ -104,7 +98,7 @@ const ManageDormers = () => {
                 <TableCell>
                   <button
                     className="text-red-500"
-                    onClick={() => handleRemoveDormer()}
+                    onClick={() => handleRemoveDormer(dormer.uID)}
                   >
                     Remove
                   </button>

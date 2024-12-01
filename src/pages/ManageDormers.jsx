@@ -6,12 +6,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+
 import { auth } from "@/firebase/auth";
 import { db } from "@/firebase/db";
+import AddDormers from "@/modals/AddDormers";
 import getDormers from "@/utils/useGetDormers";
-import getDormersByUID from "@/utils/useGetDormersByUID";
 import removeDormerByUID from "@/utils/useRemoveDormerByUID";
-import { doc, getDoc } from "firebase/firestore";
+import addDormer from "@/utils/useSignUp";
+import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -23,6 +25,16 @@ const ManageDormers = () => {
 
   const [user, isLoading] = useAuthState(auth);
   const [dormers, setDormers] = useState([]);
+  const [adminDorm, setAdminDorm] = useState("");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    roomNumber: "",
+  });
 
   useEffect(() => {
     if (!isLoading && user) {
@@ -33,10 +45,10 @@ const ManageDormers = () => {
         try {
           const adminRef = doc(db, "users", user.uid);
           const adminDocSnap = await getDoc(adminRef);
-          let adminDorm = "";
 
           if (adminDocSnap.exists()) {
-            adminDorm = adminDocSnap.data().userDorm;
+            const adminDorm = adminDocSnap.data().userDorm;
+            setAdminDorm(adminDorm);
             fetchDormers(adminDorm);
           } else {
             console.error("DNE");
@@ -78,6 +90,36 @@ const ManageDormers = () => {
     }
   };
 
+  const handleAddDormer = async (e) => {
+    e.preventDefault();
+    const { email, password, roomNumber, lastName, firstName } = formData;
+
+    try {
+      const dormer = await addDormer(email, password);
+      const docRef = await addDoc(collection(db, "users"), {
+        email,
+        userDorm: adminDorm,
+        isAdmin: false,
+        roomNumber,
+        firstName,
+        lastName,
+      });
+      console.log("Dormer added successfully:", docRef.id);
+      setIsDialogOpen(false);
+    } catch (error) {
+      console.error("Error adding dormer:", error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: name === "roomNumber" ? (value ? parseInt(value) : "") : value,
+    }));
+  };
+
   return (
     <section>
       <div className="">Manage Dormers</div>
@@ -107,6 +149,13 @@ const ManageDormers = () => {
             ))}
           </TableBody>
         </Table>
+        <AddDormers
+          isDialogOpen={isDialogOpen}
+          setIsDialogOpen={setIsDialogOpen}
+          formData={formData}
+          handleInputChange={handleInputChange}
+          handleAddDormer={handleAddDormer}
+        />
       </div>
     </section>
   );

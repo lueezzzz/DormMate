@@ -8,6 +8,10 @@ const FilePermit = ({ userDetails }) => {
   const logOut = useLogOut();
 
 
+  if (!userDetails) {
+    return <h1>Loading..</h1>
+  }
+
   return (
     <>
       <div className="user-info">

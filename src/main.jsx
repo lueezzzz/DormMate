@@ -8,7 +8,7 @@ import TransientSuccess from "./pages/TransientSuccess.jsx";
 import TransientBooking from "./pages/TransientBooking.jsx";
 import LoginPage from "./pages/Login.jsx";
 import TestDormPage from "./pages/TestDormerPage.jsx";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import ManageDormers from "./pages/ManageDormers.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +43,10 @@ const router = createBrowserRouter([
     path: "/testDormer",
     element: <TestDormPage />,
   },
+  {
+    path: "/manage-dormers",
+    element: <ManageDormers/>
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(

@@ -25,64 +25,64 @@ const ManageDormers = () => {
   const [user, isLoading] = useAuthState(auth);
   const [dormers, setDormers] = useState([]);
 
-useEffect(() => {
-  if (!isLoading && user) {
-    let unsubscribe; // Store unsubscribe function for cleanup
+  useEffect(() => {
+    if (!isLoading && user) {
+      let unsubscribe;
 
-    const fetchAdminAndDormeruID = async () => {
-      setIsFetching((prev) => ({ ...prev, adminDorm: true }));
-      try {
-        const adminRef = doc(db, "users", user.uid);
-        const adminDocSnap = await getDoc(adminRef);
-        let adminDorm = "";
+      const fetchAdminAndDormeruID = async () => {
+        setIsFetching((prev) => ({ ...prev, adminDorm: true }));
+        try {
+          const adminRef = doc(db, "users", user.uid);
+          const adminDocSnap = await getDoc(adminRef);
+          let adminDorm = "";
 
-        if (adminDocSnap.exists()) {
-          adminDorm = adminDocSnap.data().userDorm;
+          if (adminDocSnap.exists()) {
+            adminDorm = adminDocSnap.data().userDorm;
 
-          fetchDormers(adminDorm);
-          fetchDormersUID(adminDorm);
-        } else {
-          console.error("DNE");
+            fetchDormers(adminDorm);
+            fetchDormersUID(adminDorm);
+          } else {
+            console.error("DNE");
+          }
+        } catch (error) {
+          console.log("Error: ", error);
+        } finally {
+          setIsFetching((prev) => ({ ...prev, adminDorm: false }));
         }
-      } catch (error) {
-        console.log("Error: ", error);
-      } finally {
-        setIsFetching((prev) => ({ ...prev, adminDorm: false }));
-      }
-    };
+      };
 
-    const fetchDormersUID = async (dorm) => {
-      setIsFetching((prev) => ({ ...prev, dormersUID: true }));
-      try {
-        const uID = await getDormersByUID(dorm);
-        setDormerUID(uID);
-      } catch (error) {
-        console.error("Error fetching");
-      } finally {
-        setIsFetching((prev) => ({ ...prev, dormersUID: false }));
-      }
-    };
+      const fetchDormersUID = async (dorm) => {
+        setIsFetching((prev) => ({ ...prev, dormersUID: true }));
+        try {
+          const uID = await getDormersByUID(dorm);
+          setDormerUID(uID);
+        } catch (error) {
+          console.error("Error fetching");
+        } finally {
+          setIsFetching((prev) => ({ ...prev, dormersUID: false }));
+        }
+      };
 
-    const fetchDormers = async (adminDorm) => {
-      setIsFetching((prev) => ({ ...prev, dormerDetails: true }));
-      try {
-        unsubscribe = await getDormers(setDormers, adminDorm); 
-      } catch (error) {
-        console.log("Error: ", error);
-      } finally {
-        setIsFetching((prev) => ({ ...prev, dormerDetails: false }));
-      }
-    };
+      const fetchDormers = async (adminDorm) => {
+        setIsFetching((prev) => ({ ...prev, dormerDetails: true }));
+        try {
+          unsubscribe = await getDormers(setDormers, adminDorm);
+        } catch (error) {
+          console.log("Error: ", error);
+        } finally {
+          setIsFetching((prev) => ({ ...prev, dormerDetails: false }));
+        }
+      };
 
-    fetchAdminAndDormeruID();
+      fetchAdminAndDormeruID();
 
-    return () => {
-      if (unsubscribe) {
-        unsubscribe(); 
-      }
-    };
-  }
-}, [isLoading, user]);
+      return () => {
+        if (unsubscribe) {
+          unsubscribe();
+        }
+      };
+    }
+  }, [isLoading, user]);
 
   return (
     <section>
@@ -104,7 +104,7 @@ useEffect(() => {
                 <TableCell>
                   <button
                     className="text-red-500"
-                    onClick={() => handleRemoveDormer(dormer.id)}
+                    onClick={() => handleRemoveDormer()}
                   >
                     Remove
                   </button>

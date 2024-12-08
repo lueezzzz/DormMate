@@ -9,7 +9,7 @@ export default async function getDorms() {
     
     querySnapshot.forEach((doc) => {
         const dormData = doc.data();
-        dormData.image = `/dorms/${dormData.name.replace(/\s+/g, '').toLowerCase()}.PNG`; // Convert name to lowercase and remove spaces
+        dormData.image = `/dorms/${dormData.name.replace(/\s+/g, '').toLowerCase()}.PNG`; 
         dorms.push(dormData);
     });
     return dorms;

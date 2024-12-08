@@ -13,11 +13,11 @@ const DormViewCard = ({ title, image, avl_rooms }) => {
       onClick={handleCardClick}
       className="transform transition duration-300 hover:scale-105 hover:shadow-lg rounded-[1.3rem] overflow-hidden cursor-pointer"
     >
-      <div className="relative">
+      <div className="relative dorm-card-image-container">
         <img
           src={image}
-          alt=""
-          className="object-cover rounded-t-[1.3rem] transition duration-300 hover:brightness-90"
+          alt={title}
+          className="dorm-card-image object-cover rounded-t-[1.3rem] transition duration-300 hover:brightness-90"
         />
       </div>
       <div className="bg-gradient-to-r from-orange-300 via-orange-300 to-orange-400 items-center flex justify-between items-start rounded-b-[1.3rem]">

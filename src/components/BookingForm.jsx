@@ -75,12 +75,6 @@ const BookingForm = () => {
             required={true}
           />
         </div>
-        <div className="radio-group">
-          <span>Are you a UP Student or Employee?
-            <input type="radio" className="radio-button" name="up-affiliation" value="Yes" required /> Yes
-            <input type="radio" className="radio-button" name="up-affiliation" value="No" required /> No
-          </span>
-        </div>
         <Button type="submit" className="bg-[#ff8d4e] hover:bg-[#d3723e]">Book</Button>
         <Button
           type="button"

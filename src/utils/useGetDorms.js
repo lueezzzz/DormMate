@@ -6,8 +6,11 @@ export default async function getDorms() {
     const dorms = []
     const dormsCollectionRef = collection(db, "dormitories");
     const querySnapshot = await getDocs(dormsCollectionRef);
+    
     querySnapshot.forEach((doc) => {
-        dorms.push(doc.data())
+        const dormData = doc.data();
+        dormData.image = `/dorms/${dormData.name.replace(/\s+/g, '').toLowerCase()}.PNG`; 
+        dorms.push(dormData);
     });
     return dorms;
 }

@@ -1,5 +1,4 @@
 .transient-view{
-    padding-top: 15rem;
     padding-bottom: 15rem;
     min-height: 100vh;
 }
@@ -25,4 +24,17 @@
 .booking-success-message{
     top: 200px;
     margin-bottom: 300px;
+}
+
+.dorm-card-image-container {
+  width: 100%; 
+  height: 130px; 
+  overflow: hidden; 
+  position: relative;
+}
+
+.dorm-card-image {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
 }

@@ -6,15 +6,9 @@ import {
   TableRow,
   TableCell,
 } from "@/components/ui/table";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogFooter,
-  DialogTrigger,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+
 import { auth } from "@/firebase/auth";
 import { db } from "@/firebase/db";
 import getDormers from "@/utils/useGetDormers";
@@ -22,6 +16,7 @@ import { doc, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Rooms from "@/modals/Rooms";
+import { AppSidebar } from "@/components/AppSideBar";
 
 const ManageRooms = () => {
   const [user, isLoading] = useAuthState(auth);
@@ -90,29 +85,33 @@ const ManageRooms = () => {
 
   return (
     <section>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Room No.</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {Object.keys(groupedDormers)
-            .sort((a, b) => a - b)
-            .map((roomNumber) => (
-              <TableRow key={roomNumber}>
-                <TableCell>Room {roomNumber}</TableCell>
-                <TableCell>
-                  <Rooms
-                    roomNumber={roomNumber}
-                    groupedDormers={groupedDormers}
-                    setSelectedRoom={setSelectedRoom}
-                  />
-                </TableCell>
-              </TableRow>
-            ))}
-        </TableBody>
-      </Table>
+      <SidebarProvider>
+        <AppSidebar/>
+        <SidebarTrigger/>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Room No.</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {Object.keys(groupedDormers)
+              .sort((a, b) => a - b)
+              .map((roomNumber) => (
+                <TableRow key={roomNumber}>
+                  <TableCell>Room {roomNumber}</TableCell>
+                  <TableCell>
+                    <Rooms
+                      roomNumber={roomNumber}
+                      groupedDormers={groupedDormers}
+                      setSelectedRoom={setSelectedRoom}
+                    />
+                  </TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </SidebarProvider>
     </section>
   );
 };

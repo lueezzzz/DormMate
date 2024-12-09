@@ -73,6 +73,7 @@ const DormerHomepage = () => {
 
   return (
     <>
+      <Button onClick={handleResetPassword}>reset your password here</Button>
       <section className="dormer-page section-center">
         <div className="file-permit">
           <FilePermit userDetails={userDetails} />

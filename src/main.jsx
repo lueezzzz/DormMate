@@ -9,6 +9,7 @@ import TransientBooking from "./pages/TransientBooking.jsx";
 import LoginPage from "./pages/Login.jsx";
 import TestDormPage from "./pages/TestDormerPage.jsx";
 import ManageDormers from "./pages/ManageDormers.jsx";
+import ManageRooms from "./pages/ManageRooms.jsx";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
   {
     path: "/manage-dormers",
     element: <ManageDormers/>
+  },
+  {
+    path: "/manage-rooms",
+    element: <ManageRooms/>
   }
 ]);
 

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { ClassicSpinner } from "react-spinners-kit";
 
+
 import {
   Sidebar,
   SidebarContent,
@@ -129,7 +130,7 @@ export function AppSidebar() {
             <ClassicSpinner size={20} color="#ff8d4e" />
           )}
         </div>
-        <Dialog open={isOpen} onOpenChange={setIsOpen} className="">
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <DialogTrigger className="mt-4 px-4 w-full py-2 bg-[#ff8d4e] text-white hover:bg-[#d3723e] rounded-lg">
             Log Out
           </DialogTrigger>

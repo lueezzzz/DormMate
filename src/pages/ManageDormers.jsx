@@ -83,8 +83,7 @@ const ManageDormers = () => {
 
   const handleRemoveDormer = async (dormerUID) => {
     try {
-      // await removeDormerByUID(dormerUID);
-      await removeDormerByUID("TW2QtbSWxvez6HXZ2hDG5uJ5BQu2");
+      await removeDormerByUID(dormerUID);
       console.log("Removed dormer");
     } catch {
       console.log("Error removing");

@@ -22,7 +22,7 @@ const LoginForm = () => {
   const [forgotPasswordEmail, setForgotPasswordEmail] = useState("");
   const navigate = useNavigate();
 
-  // Handle login
+
   async function handleLogin() {
     setIsLoggingIn(true);
     try {

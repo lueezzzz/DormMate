@@ -1,3 +1,5 @@
+import { AppSidebar } from "@/components/AppSideBar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import {
   Table,
   TableBody,
@@ -122,41 +124,45 @@ const ManageDormers = () => {
 
   return (
     <section>
-      <div className="">Manage Dormers</div>
-      <div>
-        <Table className="w-[50%]">
-          <TableHeader>
-            <TableRow>
-              <TableHead> Name </TableHead>
-              <TableHead> Room Assignment </TableHead>
-              <TableHead> Remove </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {dormers.map((dormer, index) => (
-              <TableRow key={index}>
-                <TableCell>{`${dormer.firstName} ${dormer.lastName}`}</TableCell>
-                <TableCell>{dormer.roomNumber}</TableCell>
-                <TableCell>
-                  <button
-                    className="text-red-500"
-                    onClick={() => handleRemoveDormer(dormer.uID)}
-                  >
-                    Remove
-                  </button>
-                </TableCell>
+      <SidebarProvider>
+        <AppSidebar />
+        <SidebarTrigger />
+        <div className="">Manage Dormers</div>
+        <div>
+          <Table className="w-[50%]">
+            <TableHeader>
+              <TableRow>
+                <TableHead> Name </TableHead>
+                <TableHead> Room Assignment </TableHead>
+                <TableHead> Remove </TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        <AddDormers
-          isDialogOpen={isDialogOpen}
-          setIsDialogOpen={setIsDialogOpen}
-          formData={formData}
-          handleInputChange={handleInputChange}
-          handleAddDormer={handleAddDormer}
-        />
-      </div>
+            </TableHeader>
+            <TableBody>
+              {dormers.map((dormer, index) => (
+                <TableRow key={index}>
+                  <TableCell>{`${dormer.firstName} ${dormer.lastName}`}</TableCell>
+                  <TableCell>{dormer.roomNumber}</TableCell>
+                  <TableCell>
+                    <button
+                      className="text-red-500"
+                      onClick={() => handleRemoveDormer(dormer.uID)}
+                    >
+                      Remove
+                    </button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+          <AddDormers
+            isDialogOpen={isDialogOpen}
+            setIsDialogOpen={setIsDialogOpen}
+            formData={formData}
+            handleInputChange={handleInputChange}
+            handleAddDormer={handleAddDormer}
+          />
+        </div>
+      </SidebarProvider>
     </section>
   );
 };

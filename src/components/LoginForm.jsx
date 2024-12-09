@@ -14,6 +14,7 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog";
+import changePassword from "@/utils/useForgotPassword";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +22,6 @@ const LoginForm = () => {
   const [loggingIn, setIsLoggingIn] = useState(false);
   const [forgotPasswordEmail, setForgotPasswordEmail] = useState("");
   const navigate = useNavigate();
-
 
   async function handleLogin() {
     setIsLoggingIn(true);
@@ -33,6 +33,10 @@ const LoginForm = () => {
     } finally {
       setIsLoggingIn(false);
     }
+  }
+
+  async function handleResetPassword(email) {
+    await changePassword(email);
   }
 
   const customTheme = {
@@ -119,6 +123,8 @@ const LoginForm = () => {
                           "Send password reset email to:",
                           forgotPasswordEmail
                         );
+                        handleResetPassword(forgotPasswordEmail);
+                        console.log("email sent");
                       }}
                     >
                       Send Reset Link

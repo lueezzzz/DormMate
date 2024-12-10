@@ -16,6 +16,7 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import { Pencil } from "lucide-react";
+import assignDormerRoom from "@/utils/useAssignDormerRoom";
 
 const Rooms = ({ roomNumber, groupedDormers, setSelectedRoom }) => {
   const [isMoveDialogOpen, setIsMoveDialogOpen] = useState(false);
@@ -27,11 +28,8 @@ const Rooms = ({ roomNumber, groupedDormers, setSelectedRoom }) => {
     setIsMoveDialogOpen(true);
   };
 
-  const handleMoveToRoom = () => {
-    console.log(
-      `Moving this fucker ${selectedDormer.firstName} to fucking room ${targetRoom}`
-    );
-
+  const handleMoveToRoom = async () => {
+    await assignDormerRoom(selectedDormer.uID, targetRoom);
     setIsMoveDialogOpen(false);
   };
 

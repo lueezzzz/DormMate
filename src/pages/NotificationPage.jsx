@@ -8,20 +8,35 @@ import { useAuthState } from "react-firebase-hooks/auth";
 const NotificationPage = () => {
   const [notifs, setNotifs] = useState([]);
   const [user, isLoading] = useAuthState(auth);
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
-    const fetchNotifs = async  () => {
-      try {
-          getNotifications((updatedNotifications) => {
-            setNotifs(updatedNotifications);
+    if (!isLoading && user) {
+      const fetchNotifs = async () => {
+        setIsFetching(true);
+
+        const timeoutId = setTimeout(() => {
+          console.log("Timeout reached");
+          setIsFetching(false);
+        }, 1500);
+        try {
+          await new Promise((resolve, reject) => {
+            getNotifications((updateNotifs) => {
+              setNotifs(updateNotifs);
+              console.log(isFetching);
+              resolve();
+            });
           });
-          console.log(notifs)
-      } catch (error) {
-        console.log(error);
+        } catch (error) {
+          console.log("error");
+        } finally {
+          clearTimeout(timeoutId);
+          setIsFetching(false);
+        }
       };
-      
+
+      fetchNotifs();
     }
-    fetchNotifs();
   }, [isLoading, user]);
 
   return (

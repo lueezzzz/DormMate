@@ -13,25 +13,27 @@ const FilePermitPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    if (!isLoading && user) {
-      const fetchDormer = async () => {
+    const fetchDormer = async () => {
+      if (user) {
         try {
+          console.log(user);
+
           const dormerRef = doc(db, "users", user.uid);
           const dormerDocSnap = await getDoc(dormerRef);
 
           if (dormerDocSnap.exists()) {
             setDormer(dormerDocSnap.data());
-            console.log("fetched");
+            console.log("fetched", dormer, dormerDocSnap.data());
           } else {
             console.error("Error");
           }
         } catch (error) {
           console.error("Error fetching data: ", error);
         }
-      };
-      fetchDormer();
-    }
-  }, [isLoading, user]);
+      }
+    };
+    fetchDormer();
+  }, [user]);
 
   return (
     <>
@@ -71,6 +73,7 @@ const FilePermitPage = () => {
               <button
                 className="relative px-6 py-3 font-semibold text-white bg-gradient-to-r from-[#ff8d4e] to-[#ff622d] rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:from-[#ff622d] hover:to-[#ff8d4e] active:scale-95 focus:outline-none"
                 onClick={() => setIsModalOpen(true)}
+                disabled={!dormer}
               >
                 <span className="absolute inset-0 bg-white opacity-0 rounded-lg transition-opacity duration-300 hover:opacity-10"></span>
                 File a Permit
@@ -78,7 +81,7 @@ const FilePermitPage = () => {
             </div>
           </div>
         </SidebarProvider>
-        {isModalOpen && (
+        {isModalOpen && dormer && (
           <FilePermitModal
             openModal={isModalOpen}
             setOpenModal={setIsModalOpen}

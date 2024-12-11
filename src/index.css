@@ -15,6 +15,56 @@
 
 }
 
+:root {
+  --color-background: #fafafa;
+  --color-foreground: #1f2023;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+body.dark-mode {
+  --color-background: #1f2023;
+  --color-foreground: #efefef;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #E0E0E0;
+}
+
+body.dark-mode .header {
+  background-color: #1E1E1E;
+
+}
+
+body.dark-mode .navbar .logo h1 {
+  color: #E0E0E0;
+}
+
+body.dark-mode .nav-links a {
+  color: #E0E0E0;
+}
+
+body.dark-mode .nav-links a:hover {
+  color: orange
+}
+
+body.dark-mode  {
+  background-color: #1E1E1E;
+
+}
+
+
+
+body.dark-mode .nav-toggle,
+body.dark-mode .nav-close {
+  color: #E0E0E0;
+}
+
+
 html{
   scroll-behavior: smooth;
 }

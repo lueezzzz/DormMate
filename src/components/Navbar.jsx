@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import mainLogo from "../assets/images/MainLogo.png";
 import "../css/Navbar.css";
-import "../css/Buttons.css"
+import "../css/Buttons.css";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import { IoClose, IoMenu } from "react-icons/io5";
@@ -9,9 +9,10 @@ import { Link, useLocation } from "react-router-dom";
 import { navConfig } from "@/utils/mockData";
 import Button from "./Button";
 
-
 const Navbar = () => {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(
+    () => localStorage.getItem("theme") === "dark"
+  );
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -25,9 +26,18 @@ const Navbar = () => {
     return navConfig[pathname] || navConfig["/"];
   };
 
-  const renderButton = () => {
+  useEffect(() => {
+    if (isDark) {
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+    }
+  }, [isDark]);
 
-    console.log("The pathname is: ",  location.pathname);
+  const renderButton = () => {
+    console.log("The pathname is: ", location.pathname);
 
     if (location.pathname === "/") {
       return (
@@ -39,24 +49,18 @@ const Navbar = () => {
       );
     } else if (location.pathname === "/login") {
       return (
-
-          <Link to="/transient">
-            <Button className="transient-btn text-white" text="Transient"/>
-          </Link>
-
+        <Link to="/transient">
+          <Button className="transient-btn text-white" text="Transient" />
+        </Link>
       );
     } else {
       return (
         <Link to="/login">
-          <Button
-            className="login-btn text-white"
-            text="Login"
-          />
+          <Button className="login-btn text-white" text="Login" />
         </Link>
       );
     }
   };
-
 
   return (
     <header className="header">
@@ -73,12 +77,10 @@ const Navbar = () => {
         ) : (
           <>
             <Link to="/">
-              
-                <div className="logo">
-                  <img src={mainLogo} />
-                  <h1 className="header1">DormMate</h1>
-                </div>
-              
+              <div className="logo">
+                <img src={mainLogo} />
+                <h1 className="header1">DormMate</h1>
+              </div>
             </Link>
           </>
         )}
@@ -111,9 +113,7 @@ const Navbar = () => {
             </div>
           </ul>
         </div>
-        <div className="button-toggle">
-          {renderButton()}
-        </div>
+        <div className="button-toggle">{renderButton()}</div>
 
         <div className="nav-toggle" onClick={toggleMenu}>
           <IoMenu />

@@ -17,11 +17,13 @@ import {
 } from "@/components/ui/table";
 import { Pencil } from "lucide-react";
 import assignDormerRoom from "@/utils/useAssignDormerRoom";
+import { ClassicSpinner } from "react-spinners-kit";
 
 const Rooms = ({ roomNumber, groupedDormers, setSelectedRoom }) => {
   const [isMoveDialogOpen, setIsMoveDialogOpen] = useState(false);
   const [selectedDormer, setSelectedDormer] = useState(null);
   const [targetRoom, setTargetRoom] = useState("");
+  const [isMoving, setIsMoving] = useState(false);
 
   const handleMoveButtonClick = (dormer) => {
     setSelectedDormer(dormer);
@@ -29,8 +31,15 @@ const Rooms = ({ roomNumber, groupedDormers, setSelectedRoom }) => {
   };
 
   const handleMoveToRoom = async () => {
-    await assignDormerRoom(selectedDormer.uID, targetRoom);
-    setIsMoveDialogOpen(false);
+    try {
+      setIsMoving(true);
+      await assignDormerRoom(selectedDormer.uID, targetRoom);
+      setIsMoveDialogOpen(false);
+    } catch (error) {
+      console.log("Error: ", error);
+    } finally {
+      setIsMoving(false);
+    }
   };
 
   return (
@@ -101,7 +110,7 @@ const Rooms = ({ roomNumber, groupedDormers, setSelectedRoom }) => {
               className="bg-[#ff8d4e] hover:bg-[#d3723e] text-white"
               onClick={handleMoveToRoom}
             >
-              Move
+              {isMoving ? <ClassicSpinner size={20} color="#fff" /> : "Move"}
             </Button>
           </div>
         </DialogContent>

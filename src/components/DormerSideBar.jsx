@@ -1,4 +1,4 @@
-import { FolderKanban, FileCheck, Inbox, UsersRound } from "lucide-react";
+import { PencilLineIcon, FileCheck, BellIcon, UsersRound } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import useLogOut from "@/utils/useLogout";
 import { useEffect, useState } from "react";
@@ -29,47 +29,53 @@ import { db } from "@/firebase/db";
 
 const items = [
   {
-    title: "Manage Dormers",
-    url: "/manage-dormers",
-    icon: UsersRound,
+    title: "File Permits",
+    url: "/file-permit",
+    icon: PencilLineIcon,
   },
   {
-    title: "Manage Permits",
-    url: "/manage",
+    title: "Permit Logs",
+    url: "/permit-log",
     icon: FileCheck,
   },
   {
-    title: "Manage Rooms",
-    url: "/manage-rooms",
-    icon: FolderKanban,
+    title: "Notifications",
+    url: "/notifications",
+    icon: BellIcon,
   },
 ];
 
-export function AppSidebar() {
+
+export function DormerSideBar() {
   const location = useLocation();
   const logOut = useLogOut();
   const [isOpen, setIsOpen] = useState(false);
   const [user, isLoading] = useAuthState(auth);
-  const [adminDetails, setAdminDetails] = useState(null);
+  const [userDetails, setUserDetails] = useState(null);
 
   useEffect(() => {
-    const fetchAdmin = async () => {
-      try {
-        const adminRef = doc(db, "users", user.uid);
-        const adminDocSnap = await getDoc(adminRef);
 
-        if (adminDocSnap.exists()) {
-          setAdminDetails(adminDocSnap.data());
-          console.log(adminDetails);
-        } else {
-          console.log("DNE");
-        }
-      } catch (error) {
-        console.log("Error: ", error);
+     const fetchDormer = async () => {
+
+      if (!isLoading && user ){
+        try {
+          const dormerRef = doc(db, "users", user.uid);
+          const dormerDocSnap = await getDoc(dormerRef);
+
+          if (dormerDocSnap.exists()) {
+            setUserDetails(dormerDocSnap.data());
+          } else {
+            console.error("Error");
+          }
+        } catch (error) {
+          console.error("Error fetching data: ", error);
+        } 
       }
-    };
 
-    fetchAdmin();
+     }
+
+     fetchDormer();
+
   }, [user, isLoading]);
 
   const handleLogOut = () => {
@@ -104,21 +110,16 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <div className="mt-auto p-4 border-t">
-        <div className="flex items-center gap-3 mb-3">
-          <img
-            src="https://via.placeholder.com/40"
-            alt="Profile"
-            className="w-10 h-10 rounded-full"
-          />
-          {adminDetails ? (
+        <div className="flex items-center  mb-1 ml-1">
+          {userDetails ? (
             <>
               <div className="flex flex-col">
                 <span className="text-md font-bold">
-                  {adminDetails.firstName} {adminDetails.lastName}
+                  {userDetails.firstName} {userDetails.lastName}
                 </span>
                 <p className="text-sm">
-                  {adminDetails.userDorm
-                    .replace(/([a-z])([A-Z])/g, "$1 $2")
+                  {userDetails.userDorm
+                    .replace(/([a-z])([A-Z])/g, "$1 $2") 
                     .replace(/\b\w/g, (char) => char.toUpperCase())}
                 </p>
               </div>

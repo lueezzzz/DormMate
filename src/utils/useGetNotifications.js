@@ -6,17 +6,19 @@ export default function getNotifications(onNotificationsChange) {
     const { uid } = auth.currentUser;
     console.log(auth.currentUser);
 
-    const getNotificationssQuery = query(
+    const getNotificationsQuery = query(
         collection(db, "notifications"),
         where("dormerID", "==", uid)
     );
 
     // Using onSnapshot to listen for real-time updates
-    const unsubscribe = onSnapshot(getNotificationssQuery, (querySnapshot) => {
+    const unsubscribe = onSnapshot(getNotificationsQuery, (querySnapshot) => {
         const notifications = [];
         querySnapshot.forEach((doc) => {
             notifications.push({ ...doc.data(), ...{ id: doc.id } });
         });
+        console.log("user notifs are: ", notifications);
+
         onNotificationsChange(notifications);
     });
 

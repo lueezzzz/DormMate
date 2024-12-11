@@ -16,6 +16,8 @@ export default async function managePermit(permitID, permitStatus) {
       await setDoc(permitDocRef, managedPermit);
       console.log(`Permit ${permitID} updated to status: ${permitStatus}`);
       await setDoc(newNotifDocRef, managedPermit)
+      console.log(`Permit ${permitID} added to notif: ${permitStatus}`);
+
     } else {
       console.log("No such document!");
     }

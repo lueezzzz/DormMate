@@ -15,5 +15,5 @@ export default async function resolveRouteByLogin(email, password) {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => { isAdmin = doc.data().isAdmin; });
 
-    return isAdmin ? "/manage" : "/dormer";
+    return isAdmin ? "/manage" : "/file-permit";
 }

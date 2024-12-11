@@ -10,6 +10,9 @@ import LoginPage from "./pages/Login.jsx";
 import TestDormPage from "./pages/TestDormerPage.jsx";
 import ManageDormers from "./pages/ManageDormers.jsx";
 import ManageRooms from "./pages/ManageRooms.jsx";
+import FilePermitPage from "./pages/FilePermitPage.jsx";
+import PermitLogsPage from "./pages/PermitLogsPage.jsx";
+import NotificationPage from "./pages/NotificationPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,8 +24,8 @@ const router = createBrowserRouter([
     element: <AdminPermits />,
   },
   {
-    path: "/dormer",
-    element: <DormerHomepage />,
+    path: "/file-permit",
+    element: <FilePermitPage/>,
   },
   {
     path: "/transient",
@@ -51,7 +54,16 @@ const router = createBrowserRouter([
   {
     path: "/manage-rooms",
     element: <ManageRooms/>
+  },
+  {
+    path: "/permit-log",
+    element: <PermitLogsPage/>
+  },
+  {
+    path: "/notifications",
+    element: <NotificationPage/>
   }
+
 ]);
 
 createRoot(document.getElementById("root")).render(

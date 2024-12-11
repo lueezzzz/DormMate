@@ -21,6 +21,7 @@ const FilePermitModal = ({ openModal, setOpenModal, userDetails }) => {
     purpose: "",
     dateFiled: "",
     permitStatus: "Pending",
+    permitFiler: userDetails.firstName + " " + userDetails.lastName,
   });
 
   const onCloseModal = () => {
@@ -35,6 +36,7 @@ const FilePermitModal = ({ openModal, setOpenModal, userDetails }) => {
       purpose: "",
       dateFiled: "",
       permitStatus: "Pending",
+      permitFiler: userDetails.firstName + " " + userDetails.lastName,
     });
   };
 
@@ -188,14 +190,14 @@ const FilePermitModal = ({ openModal, setOpenModal, userDetails }) => {
                   disabled={isLoading}
                   min={
                     formData.permitType === "Late Permit"
-                      ? new Date().toISOString().split("T")[0] 
+                      ? new Date().toISOString().split("T")[0]
                       : formData.permitType === "Overnight Permit"
                       ? new Date(new Date().setDate(new Date().getDate() + 1))
                           .toISOString()
-                          .split("T")[0] 
+                          .split("T")[0]
                       : formData.permitType === "Weekend Permit"
-                      ? new Date().toISOString().split("T")[0] 
-                      : "" 
+                      ? new Date().toISOString().split("T")[0]
+                      : ""
                   }
                 />
               </div>

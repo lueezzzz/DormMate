@@ -61,7 +61,7 @@ const PermitModal = ({ permit, isModalOpen, setIsModalOpen }) => {
         ) : (
           <div className="grid gap-4 py-4">
             <p>
-              <strong>Name of Filer: </strong>
+              <strong>Name of Filer: </strong> {permit.permitFiler}
             </p>
             <p>
               <strong>Purpose:</strong> {permit.purpose}

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const SuccessMessage = () => {
   return (
     <>
-      <section className="booking-success-message">
+      <section className="booking-success-message h-screen">
         <img src={check} alt="Check Icon" className="check-icon" />
         <div className="success-msg-content">
           <h1>

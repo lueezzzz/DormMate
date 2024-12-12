@@ -12,6 +12,10 @@ const BookingForm = () => {
     navigate("/transient");
   };
 
+  const handleBook = () => {
+    navigate("/transient-success");
+  };
+
   return(
       <form className="booking-form">
         <div>
@@ -75,7 +79,12 @@ const BookingForm = () => {
             required={true}
           />
         </div>
-        <Button type="submit" className="bg-[#ff8d4e] hover:bg-[#d3723e]">Book</Button>
+        <Button 
+          type="submit" 
+          className="bg-[#ff8d4e] hover:bg-[#d3723e]"
+          onClick={handleBook}>
+        Book
+        </Button>
         <Button
           type="button"
           variant="ghost"

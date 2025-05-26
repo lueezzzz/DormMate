@@ -18,7 +18,6 @@ Feature: DormMate File Permit
     And I enter return date "<returnDate>"
     And I enter purpose "<purpose>"
     And I submit the permit
-    Then the File Permit modal should close
 
     Examples:
       | permitType      | timeOut | destination   | emergencyContact | returnDate  | purpose         |

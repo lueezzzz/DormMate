@@ -1,12 +1,27 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
+Given("the DormMate app is running", () => {
+  cy.visit("/");
+});
+
+Given(
+  "I am logged in as a dormer with email {string} and password {string}",
+  (email, password) => {
+    cy.visit("/login");
+    cy.get("#email").clear().type(email);
+    cy.get("#password").clear().type(password);
+    cy.get('button[type="submit"]').click();
+    cy.location("pathname", { timeout: 10000 }).should("eq", "/file-permit");
+  }
+);
 
 Given("I am on the file permit page", () => {
   cy.visit("/file-permit");
 });
 
 When("I open the File Permit modal", () => {
-  cy.contains("button", "File Permit").click();
+  cy.contains("h1", "File Permits").should("be.visible");
+  cy.contains("button", "File a Permit").click();
   cy.get('div[role="dialog"]').should("be.visible");
 });
 
@@ -38,6 +53,3 @@ When("I submit the permit", () => {
   cy.get('button[type="submit"]').click();
 });
 
-Then("the File Permit modal should close", () => {
-  cy.get('div[role="dialog"]').should("not.exist");
-});

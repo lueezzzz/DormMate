@@ -2,7 +2,6 @@ Feature: DormMate Logout
 
   As a logged-in user of DormMate  
   I want to log out  
-  So that I am returned to the login screen and my session is cleared
 
   Background:
     Given the DormMate app is running

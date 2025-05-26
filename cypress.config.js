@@ -1,19 +1,27 @@
-const { defineConfig } = require("cypress");
+import { defineConfig } from "cypress";
+import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-preprocessor";
+import { createEsbuildPlugin } from "@badeball/cypress-cucumber-preprocessor/esbuild";
+import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
 
-module.exports = defineConfig({
-  "cypress-cucumber-preprocessor": {
-    nonGlobalStepDefinitions: false,
-
-    step_definitions: "./cypress/e2e/login/",
-  },
-
+export default defineConfig({
   e2e: {
-    setupNodeEvents(on, config) {
-      return require("./cypress/plugins/index.js")(on, config);
+    baseUrl: "http://localhost:5173",
+    specPattern: "**/*.feature",
+    stepDefinitions: [
+      "cypress/e2e/**/*.js",
+      "cypress/support/step_definitions/**/*.js",
+    ],
+    async setupNodeEvents(on, config) {
+      await addCucumberPreprocessorPlugin(on, config);
+
+      on(
+        "file:preprocessor",
+        createBundler({
+          plugins: [createEsbuildPlugin(config)],
+        })
+      );
+
+      return config;
     },
-
-    specPattern: "cypress/e2e/**/*.feature",
-
-    supportFile: false,
   },
 });

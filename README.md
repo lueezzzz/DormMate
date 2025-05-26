@@ -1,6 +1,15 @@
 # 📖 DormMate - a Dorm Management System
 
-This will be the official repository for DormMate - a Dorm Management System Web Application
+This will be the official repository for DormMate - a Dorm Management System Web Application tailored 
+
+
+To access as a dormer please use the following credentials:
+testuser@up.edu.ph
+testpassword
+
+To access as a dorm manager please use the following credentials:
+testuser2@up.edu.ph
+testpassword
 
 
 ## 💻 Technology stack

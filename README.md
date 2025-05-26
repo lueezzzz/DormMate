@@ -2,6 +2,7 @@
 
 This will be the official repository for DormMate - a Dorm Management System Web Application tailored 
 
+Live website deployment: https://dorm-mate.netlify.app/
 
 To access as a dormer please use the following credentials:
 testuser@up.edu.ph

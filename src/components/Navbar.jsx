@@ -7,11 +7,11 @@ import "react-toggle/style.css";
 import { IoClose, IoMenu } from "react-icons/io5";
 import { Link, useLocation } from "react-router-dom";
 import { navConfig } from "@/utils/mockData";
-import Button from "./Button";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isDark, setIsDark] = useState(
-    () => localStorage.getItem("theme") === "dark"
+    () => localStorage.getItem("theme") === "dark",
   );
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -50,13 +50,17 @@ const Navbar = () => {
     } else if (location.pathname === "/login") {
       return (
         <Link to="/transient">
-          <Button className="transient-btn text-white" text="Transient" />
+          <Button className="transient-btn text-white" variant="default">
+            Transient
+          </Button>
         </Link>
       );
     } else {
       return (
         <Link to="/login">
-          <Button className="login-btn text-white" text="Login" />
+          <Button className="login-btn text-white" variant="default">
+            Login
+          </Button>
         </Link>
       );
     }

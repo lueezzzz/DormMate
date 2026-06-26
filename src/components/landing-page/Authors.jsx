@@ -1,6 +1,6 @@
 import React from "react";
-import "../css/Authors.css";
-import "../css/Helpers.css";
+import "../../css/Authors.css";
+import "../../css/Helpers.css";
 import { authors } from "@/utils/mockData";
 
 const Authors = () => {

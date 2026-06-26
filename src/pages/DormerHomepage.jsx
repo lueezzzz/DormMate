@@ -3,7 +3,7 @@ import "../index.css";
 import FilePermit from "../components/FilePermit";
 import "../css/DormerPage.css";
 import PermitLogs from "@/components/PermitLogs";
-import Footer from "@/components/Footer";
+import Footer from "@/components/landing-page/Footer";
 import { auth } from "@/firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db } from "@/firebase/db";

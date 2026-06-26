@@ -1,7 +1,7 @@
 import React from "react";
-import fillerImg2 from "../assets/images/Filler2.png"
-import "../css/Helpers.css"
-import "../css/About.css"
+import fillerImg2 from "../../assets/images/Filler2.png";
+import "../../css/Helpers.css";
+import "../../css/About.css";
 
 const About = () => {
   return (
@@ -15,7 +15,7 @@ const About = () => {
             transient or a dorm admin, our platform is designed to put you in
             control. We provide an all-in-one solution for handling everything
             from filing permits, managing room availability and transient
-            bookings—whenever and wherever you need it.
+            bookings, whenever and wherever you need it.
           </p>
         </div>
         <div>

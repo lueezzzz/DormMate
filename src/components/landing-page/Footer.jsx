@@ -1,6 +1,6 @@
-import React from 'react'
-import { socialLinks } from '@/utils/mockData';
-import "../css/Footer.css"
+import React from "react";
+import { socialLinks } from "@/utils/mockData";
+import "../../css/Footer.css";
 
 const Footer = () => {
   return (
@@ -23,6 +23,6 @@ const Footer = () => {
       </p>
     </footer>
   );
-}
+};
 
-export default Footer
+export default Footer;

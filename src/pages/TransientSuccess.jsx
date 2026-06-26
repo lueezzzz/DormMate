@@ -1,10 +1,8 @@
-import React from 'react'
-import Navbar from '../components/Navbar';
-import Footer from "@/components/Footer";
-import "../css/TransientView.css"
-import SuccessMessage from '@/components/SuccessMessage';
-
-
+import React from "react";
+import Navbar from "../components/Navbar";
+import Footer from "@/components/landing-page/Footer";
+import "../css/TransientView.css";
+import SuccessMessage from "@/components/SuccessMessage";
 
 const TransientSuccess = () => {
   return (
@@ -14,6 +12,6 @@ const TransientSuccess = () => {
       <Footer />
     </>
   );
-}
+};
 
-export default TransientSuccess
+export default TransientSuccess;

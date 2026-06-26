@@ -15,9 +15,8 @@ const Feature = () => {
           </p>
           <ul className='features'>
             <li>File Permits Whenever, Wherever.</li>
-            <li>Seamless Dorm Managment.</li>
-            <li>Managing dormers made easier.</li>
-            <li>Managing dormers made easier.</li>
+            <li>Effortless Room Assignments</li>
+            <li>Transients Made Eeasier</li>
           </ul>
       </div>
     </section>

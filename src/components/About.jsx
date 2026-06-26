@@ -15,7 +15,7 @@ const About = () => {
             transient or a dorm admin, our platform is designed to put you in
             control. We provide an all-in-one solution for handling everything
             from filing permits, managing room availability and transient
-            bookings—whenever and wherever you need it.
+            bookings, whenever and wherever you need it.
           </p>
         </div>
         <div>

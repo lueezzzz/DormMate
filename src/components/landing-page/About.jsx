@@ -1,7 +1,7 @@
 import React from "react";
-import fillerImg2 from "../assets/images/Filler2.png"
-import "../css/Helpers.css"
-import "../css/About.css"
+import fillerImg2 from "../../assets/images/Filler2.png";
+import "../../css/Helpers.css";
+import "../../css/About.css";
 
 const About = () => {
   return (

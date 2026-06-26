@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/Hero.css";
+import "../../css/Hero.css";
 import { useNavigate } from "react-router";
 
 const Hero = () => {
@@ -10,7 +10,7 @@ const Hero = () => {
         <div className="container bg-gradient-to-r from-orange-300 via-orange-300 to-orange-400">
           <div className="hero-content">
             <h1>
-              Your Ultimate Dorm Manager! File, Organize, Stay Informed — All in
+              Your Ultimate Dorm Manager! File, Organize, Stay Informed. All in
               One Place.
             </h1>
             <p>
@@ -18,7 +18,10 @@ const Hero = () => {
               stay updated on announcements, and manage everything in one place.
               Dorm life made simple!
             </p>
-            <button className="cta-btn" onClick={() => navigate("/login")}> Get Started </button>
+            <button className="cta-btn" onClick={() => navigate("/login")}>
+              {" "}
+              Get Started{" "}
+            </button>
           </div>
         </div>
       </section>

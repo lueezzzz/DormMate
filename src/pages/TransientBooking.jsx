@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Headline from "@/components/Headline";
-import Footer from "@/components/Footer";
-import "../css/TransientBooking.css"
+import Footer from "@/components/landing-page/Footer";
+import "../css/TransientBooking.css";
 import BookingForm from "@/components/BookingForm";
-
 
 const TransientBooking = () => {
   const location = useLocation();

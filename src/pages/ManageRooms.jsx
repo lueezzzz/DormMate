@@ -23,8 +23,8 @@ const ManageRooms = () => {
   const [user, isLoading] = useAuthState(auth);
   const [dormers, setDormers] = useState([]);
   const [adminDorm, setAdminDorm] = useState("");
-  const [selectedRoom, setSelectedRoom] = useState(null); 
-  const [groupedDormers, setGroupedDormers] = useState({}); 
+  const [selectedRoom, setSelectedRoom] = useState(null);
+  const [groupedDormers, setGroupedDormers] = useState({});
   const [isFetching, setIsFetching] = useState({
     adminDorm: false,
     dormerDetails: false,
@@ -48,7 +48,6 @@ const ManageRooms = () => {
             console.error("DNE");
           }
         } catch (error) {
-          console.log("Error: ", error);
         } finally {
           setIsFetching((prev) => ({ ...prev, adminDorm: false }));
         }
@@ -68,7 +67,6 @@ const ManageRooms = () => {
             setGroupedDormers(grouped);
           }, adminDorm);
         } catch (error) {
-          console.log("Error: ", error);
         } finally {
           setIsFetching((prev) => ({ ...prev, dormerDetails: false }));
         }
@@ -97,7 +95,7 @@ const ManageRooms = () => {
           </div>
           {isFetching.adminDorm || isFetching.dormerDetails ? (
             <div className="flex justify-center items-center h-64">
-                <Loader2/>
+              <Loader2 />
             </div>
           ) : (
             <Table className="sm:w-full md:w-3/4 lg:w-1/2 min-w-full bg-white border border-gray-200 rounded-lg shadow-md">

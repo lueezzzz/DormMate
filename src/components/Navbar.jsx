@@ -8,6 +8,7 @@ import { IoClose, IoMenu } from "react-icons/io5";
 import { Link, useLocation } from "react-router-dom";
 import { navConfig } from "@/utils/mockData";
 import { Button } from "@/components/ui/button";
+import { setStoredTheme } from "@/utils/theme";
 
 const Navbar = () => {
   const [isDark, setIsDark] = useState(
@@ -27,17 +28,10 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    if (isDark) {
-      document.body.classList.add("dark-mode");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.body.classList.remove("dark-mode");
-      localStorage.setItem("theme", "light");
-    }
+    setStoredTheme(isDark);
   }, [isDark]);
 
   const renderButton = () => {
-   
     if (location.pathname === "/") {
       return (
         <Toggle

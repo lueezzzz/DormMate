@@ -1,5 +1,5 @@
-import { initializeApp, deleteApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { initializeApp, deleteApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default async function signUpDormer(email, password) {
   let dormer;
@@ -15,18 +15,17 @@ export default async function signUpDormer(email, password) {
 
   const app = initializeApp(firebaseConfig, email);
   const auth = getAuth(app);
-  await createUserWithEmailAndPassword(auth, email, password).then(async (userCredential) => {
-    // Signed up
-    dormer = userCredential.user;
-    const id = dormer.uid;
-    console.log("created account: ", id);
-    return;
-  }).catch((error) => {
-    // ..
-  });
+  await createUserWithEmailAndPassword(auth, email, password)
+    .then(async (userCredential) => {
+      // Signed up
+      dormer = userCredential.user;
+      const id = dormer.uid;
+      return;
+    })
+    .catch((error) => {
+      // ..
+    });
   deleteApp(app);
-
-
 
   return dormer;
 }

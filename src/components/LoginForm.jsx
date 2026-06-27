@@ -119,12 +119,7 @@ const LoginForm = () => {
                     <Button
                       className="bg-[#ff8d4e] hover:bg-[#d3723e] text-white "
                       onClick={() => {
-                        console.log(
-                          "Send password reset email to:",
-                          forgotPasswordEmail
-                        );
                         handleResetPassword(forgotPasswordEmail);
-                        console.log("email sent");
                       }}
                     >
                       Send Reset Link

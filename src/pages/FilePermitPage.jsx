@@ -16,14 +16,11 @@ const FilePermitPage = () => {
     const fetchDormer = async () => {
       if (user) {
         try {
-          console.log(user);
-
           const dormerRef = doc(db, "users", user.uid);
           const dormerDocSnap = await getDoc(dormerRef);
 
           if (dormerDocSnap.exists()) {
             setDormer(dormerDocSnap.data());
-            console.log("fetched", dormer, dormerDocSnap.data());
           } else {
             console.error("Error");
           }

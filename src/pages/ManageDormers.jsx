@@ -76,7 +76,6 @@ const ManageDormers = () => {
             console.error("DNE");
           }
         } catch (error) {
-          console.log("Error: ", error);
         } finally {
           setIsFetching((prev) => ({ ...prev, adminDorm: false }));
         }
@@ -87,7 +86,6 @@ const ManageDormers = () => {
         try {
           unsubscribe = await getDormers(setDormers, adminDorm);
         } catch (error) {
-          console.log("Error: ", error);
         } finally {
           setIsFetching((prev) => ({ ...prev, dormerDetails: false }));
         }
@@ -107,12 +105,10 @@ const ManageDormers = () => {
     setIsRemoving(true);
     try {
       await removeDormerByUID(dormerUID);
-      console.log("Removed dormer");
     } catch {
-      console.log("Error removing");
     } finally {
       setIsRemoving(false);
-      setIsOpen(false)
+      setIsOpen(false);
     }
   };
 
@@ -131,7 +127,6 @@ const ManageDormers = () => {
         firstName,
         lastName,
       });
-      console.log("Dormer added successfully:", dormer.uid);
       setIsDialogOpen(false);
     } catch (error) {
       console.error("Error adding dormer:", error);
@@ -171,21 +166,23 @@ const ManageDormers = () => {
               ) : dormers.length === 0 ? (
                 <div className="flex flex-col justify-center items-center">
                   <img src={EmptyLog} alt="No Dormers" className="mt-[50px]" />
-                  <p className="text-gray-500">No Dormers yet.</p>
+                  <p className="text-gray-500 dark:text-gray-400">
+                    No Dormers yet.
+                  </p>
                 </div>
               ) : (
                 <div>
                   <div className="overflow-x-auto mt-10">
-                    <Table className="sm:w-full md:w-3/4 lg:w-1/2 min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+                    <Table className="sm:w-full md:w-3/4 lg:w-1/2 min-w-full bg-white dark:bg-[#1f1f1f] border border-gray-200 dark:border-[#2f2f2f] rounded-lg shadow-md">
                       <TableHeader>
-                        <TableRow className="bg-gray-100 text-left">
-                          <TableHead className="px-4 py-2 text-sm font-medium text-gray-600">
+                        <TableRow className="bg-gray-100 dark:bg-[#252525] text-left">
+                          <TableHead className="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300">
                             Name
                           </TableHead>
-                          <TableHead className="px-4 py-2 text-sm font-medium text-gray-600">
+                          <TableHead className="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300">
                             Room Assignment
                           </TableHead>
-                          <TableHead className="px-4 py-2 text-sm font-medium text-gray-600">
+                          <TableHead className="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300">
                             Remove
                           </TableHead>
                         </TableRow>
@@ -194,10 +191,10 @@ const ManageDormers = () => {
                         {dormers.map((dormer, index) => (
                           <TableRow
                             key={index}
-                            className="border-b even:bg-gray-50 hover:bg-gray-100"
+                            className="border-b border-gray-200 dark:border-[#2f2f2f] even:bg-gray-50 dark:even:bg-[#222222] hover:bg-gray-100 dark:hover:bg-[#2a2a2a]"
                           >
-                            <TableCell className="px-4 py-2 text-sm text-gray-800">{`${dormer.firstName} ${dormer.lastName}`}</TableCell>
-                            <TableCell className="px-4 py-2 text-sm text-gray-600">
+                            <TableCell className="px-4 py-2 text-sm text-gray-800 dark:text-gray-100">{`${dormer.firstName} ${dormer.lastName}`}</TableCell>
+                            <TableCell className="px-4 py-2 text-sm text-gray-600 dark:text-gray-300">
                               {dormer.roomNumber}
                             </TableCell>
                             <TableCell>

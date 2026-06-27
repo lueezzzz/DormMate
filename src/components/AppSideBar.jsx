@@ -60,13 +60,9 @@ export function AppSidebar() {
 
         if (adminDocSnap.exists()) {
           setAdminDetails(adminDocSnap.data());
-          console.log(adminDetails);
         } else {
-          console.log("DNE");
         }
-      } catch (error) {
-        console.log("Error: ", error);
-      }
+      } catch (error) {}
     };
 
     fetchAdmin();
@@ -78,7 +74,7 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar className="bg-white w-64 text-[#ff8d4e]">
+    <Sidebar className="bg-white dark:bg-[#1f1f1f] w-64 text-[#ff8d4e]">
       <div className="p-4 text-2xl font-bold">DormMate</div>
       <SidebarContent>
         <SidebarGroup>
@@ -103,7 +99,7 @@ export function AppSidebar() {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-      <div className="mt-auto p-4 border-t">
+      <div className="mt-auto p-4 border-t border-gray-200 dark:border-[#2f2f2f]">
         <div className="flex items-center gap-3 mb-3">
           <img
             src="https://via.placeholder.com/40"
@@ -113,10 +109,10 @@ export function AppSidebar() {
           {adminDetails ? (
             <>
               <div className="flex flex-col">
-                <span className="text-md font-bold">
+                <span className="text-md font-bold text-gray-900 dark:text-gray-100">
                   {adminDetails.firstName} {adminDetails.lastName}
                 </span>
-                <p className="text-sm">
+                <p className="text-sm text-gray-600 dark:text-gray-300">
                   {adminDetails.userDorm
                     .replace(/([a-z])([A-Z])/g, "$1 $2")
                     .replace(/\b\w/g, (char) => char.toUpperCase())}

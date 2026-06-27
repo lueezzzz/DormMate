@@ -22,7 +22,6 @@ const AdminPermits = () => {
 
   useEffect(() => {
     if (!isLoading && user) {
-      console.log("loading done!");
       (async () => {
         setIsFetching(true);
         const unsubscribe = getDormerPermits((updatedPermits) => {
@@ -33,7 +32,6 @@ const AdminPermits = () => {
         return () => unsubscribe();
       })();
     } else if (isLoading) {
-      console.log("loading wait...");
     }
   }, [isLoading, user]);
 
@@ -98,7 +96,7 @@ const AdminPermits = () => {
 
             {isFetching ? (
               <div className="flex justify-center items-center h-64">
-                <Loader2/>
+                <Loader2 />
               </div>
             ) : (
               <>
@@ -150,8 +148,8 @@ const AdminPermits = () => {
                                 permit.permitStatus === "Approved"
                                   ? "bg-green-200 text-green-800"
                                   : permit.permitStatus === "Rejected"
-                                  ? "bg-red-200 text-red-800"
-                                  : "bg-yellow-300 text-yellow-800"
+                                    ? "bg-red-200 text-red-800"
+                                    : "bg-yellow-300 text-yellow-800"
                               }`}
                             >
                               {permit.permitStatus}

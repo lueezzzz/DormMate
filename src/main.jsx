@@ -11,6 +11,10 @@ import ManageRooms from "./pages/ManageRooms.jsx";
 import FilePermitPage from "./pages/FilePermitPage.jsx";
 import PermitLogsPage from "./pages/PermitLogsPage.jsx";
 import NotificationPage from "./pages/NotificationPage.jsx";
+import { applyStoredTheme } from "./utils/theme";
+import RequireAdmin from "./components/RequireAdmin.jsx";
+
+applyStoredTheme();
 
 const router = createBrowserRouter([
   {
@@ -19,7 +23,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/manage",
-    element: <AdminPermits />,
+    element: (
+      <RequireAdmin>
+        <AdminPermits />
+      </RequireAdmin>
+    ),
   },
   {
     path: "/file-permit",
@@ -43,11 +51,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/manage-dormers",
-    element: <ManageDormers />,
+    element: (
+      <RequireAdmin>
+        <ManageDormers />
+      </RequireAdmin>
+    ),
   },
   {
     path: "/manage-rooms",
-    element: <ManageRooms />,
+    element: (
+      <RequireAdmin>
+        <ManageRooms />
+      </RequireAdmin>
+    ),
   },
   {
     path: "/permit-log",

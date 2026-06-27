@@ -25,19 +25,16 @@ const PermitLogsPage = () => {
         setIsFetching(true);
 
         const timeoutId = setTimeout(() => {
-          console.log("Timeout reached");
           setIsFetching(false);
         }, 1500);
         try {
           await new Promise((resolve, reject) => {
             getUserPermits((updatedPermits) => {
               setPermits(updatedPermits);
-              console.log(isFetching);
               resolve();
             });
           });
         } catch (error) {
-          console.log("error");
         } finally {
           clearTimeout(timeoutId);
           setIsFetching(false);
@@ -157,8 +154,8 @@ const PermitLogsPage = () => {
                               permit.permitStatus === "Approved"
                                 ? "bg-green-200 text-green-800"
                                 : permit.permitStatus === "Rejected"
-                                ? "bg-red-200 text-red-800"
-                                : "bg-yellow-300 text-yellow-800"
+                                  ? "bg-red-200 text-red-800"
+                                  : "bg-yellow-300 text-yellow-800"
                             }`}
                           >
                             {permit.permitStatus}

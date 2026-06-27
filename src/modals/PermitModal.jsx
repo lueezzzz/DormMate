@@ -13,31 +13,29 @@ import { ClassicSpinner } from "react-spinners-kit";
 const PermitModal = ({ permit, isModalOpen, setIsModalOpen }) => {
   if (!permit) return null;
 
-  const [isLoading, setIsLoading] = useState(false); 
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleApprove = async () => {
-    setIsLoading(true); 
+    setIsLoading(true);
     try {
       await managePermit(permit.permitID, "Approved");
-      console.log("Permit approved:", permit.permitID);
       setIsModalOpen(false);
     } catch (error) {
       console.error("Error approving permit:", error);
     } finally {
-      setIsLoading(false); 
+      setIsLoading(false);
     }
   };
 
   const handleReject = async () => {
-    setIsLoading(true); 
+    setIsLoading(true);
     try {
       await managePermit(permit.permitID, "Rejected");
-      console.log("Permit rejected:", permit.permitID);
       setIsModalOpen(false);
     } catch (error) {
       console.error("Error rejecting permit:", error);
     } finally {
-      setIsLoading(false); 
+      setIsLoading(false);
     }
   };
 

@@ -76,11 +76,8 @@ const FilePermitModal = ({ openModal, setOpenModal, userDetails }) => {
 
     updatedFormData.permitStatus = updatedFormData.permitStatus || "Pending";
 
-    console.log("Submitting Permit Data:", updatedFormData);
-
     try {
       await filePermit(updatedFormData);
-      console.log("Permit filed successfully");
       onCloseModal();
     } catch (error) {
       console.error("Error filing permit:", error);
@@ -191,12 +188,12 @@ const FilePermitModal = ({ openModal, setOpenModal, userDetails }) => {
                     formData.permitType === "Late Permit"
                       ? new Date().toISOString().split("T")[0]
                       : formData.permitType === "Overnight Permit"
-                      ? new Date(new Date().setDate(new Date().getDate() + 1))
-                          .toISOString()
-                          .split("T")[0]
-                      : formData.permitType === "Weekend Permit"
-                      ? new Date().toISOString().split("T")[0]
-                      : ""
+                        ? new Date(new Date().setDate(new Date().getDate() + 1))
+                            .toISOString()
+                            .split("T")[0]
+                        : formData.permitType === "Weekend Permit"
+                          ? new Date().toISOString().split("T")[0]
+                          : ""
                   }
                 />
               </div>

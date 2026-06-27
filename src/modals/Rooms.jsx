@@ -36,7 +36,6 @@ const Rooms = ({ roomNumber, groupedDormers, setSelectedRoom }) => {
       await assignDormerRoom(selectedDormer.uID, targetRoom);
       setIsMoveDialogOpen(false);
     } catch (error) {
-      console.log("Error: ", error);
     } finally {
       setIsMoving(false);
     }

@@ -46,7 +46,7 @@ const AddDormers = ({
                 type="text"
                 value={formData.firstName}
                 onChange={handleInputChange}
-                className="bg-gray-100"
+                className="bg-gray-100 dark:bg-[#2a2a2a] dark:text-gray-100 dark:placeholder:text-gray-400"
                 required={true}
               />
             </div>
@@ -58,7 +58,7 @@ const AddDormers = ({
                 type="text"
                 value={formData.lastName}
                 onChange={handleInputChange}
-                className="bg-gray-100"
+                className="bg-gray-100 dark:bg-[#2a2a2a] dark:text-gray-100 dark:placeholder:text-gray-400"
                 required={true}
               />
             </div>
@@ -70,7 +70,7 @@ const AddDormers = ({
                 type="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="bg-gray-100"
+                className="bg-gray-100 dark:bg-[#2a2a2a] dark:text-gray-100 dark:placeholder:text-gray-400"
                 required={true}
               />
             </div>
@@ -82,7 +82,7 @@ const AddDormers = ({
                 type="password"
                 value={formData.password}
                 onChange={handleInputChange}
-                className="bg-gray-100"
+                className="bg-gray-100 dark:bg-[#2a2a2a] dark:text-gray-100 dark:placeholder:text-gray-400"
                 required={true}
               />
             </div>
@@ -94,7 +94,7 @@ const AddDormers = ({
                 type="number"
                 value={formData.roomNumber}
                 onChange={handleInputChange}
-                className="bg-gray-100"
+                className="bg-gray-100 dark:bg-[#2a2a2a] dark:text-gray-100 dark:placeholder:text-gray-400"
                 required={true}
               />
             </div>
@@ -104,7 +104,11 @@ const AddDormers = ({
               Add
             </Button>
             <DialogClose asChild>
-              <Button type="button" variant="ghost">
+              <Button
+                type="button"
+                variant="ghost"
+                className="text-black dark:text-gray-100"
+              >
                 Cancel
               </Button>
             </DialogClose>

@@ -20,7 +20,6 @@ const NotificationPage = () => {
         setIsFetching(true);
 
         const timeoutId = setTimeout(() => {
-          console.log("Timeout reached");
           setIsFetching(false);
         }, 1500);
         try {
@@ -31,7 +30,6 @@ const NotificationPage = () => {
             });
           });
         } catch (error) {
-          console.log("Error fetching notifications:", error);
         } finally {
           clearTimeout(timeoutId);
           setIsFetching(false);
@@ -42,20 +40,19 @@ const NotificationPage = () => {
     }
   }, [isLoading, user]);
 
-const handleClearNotifications = async () => {
-  try {
-    setIsRemoving(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+  const handleClearNotifications = async () => {
+    try {
+      setIsRemoving(true);
+      await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    await deleteNotifs();
-    setNotifs([]); 
-    console.log("All notifications cleared");
-  } catch (error) {
-    console.error("Error clearing notifications:", error);
-  } finally {
-    setIsRemoving(false);
-  }
-};
+      await deleteNotifs();
+      setNotifs([]);
+    } catch (error) {
+      console.error("Error clearing notifications:", error);
+    } finally {
+      setIsRemoving(false);
+    }
+  };
   return (
     <section className="p-6 sm:p-4 md:p-6">
       <SidebarProvider>

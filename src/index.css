@@ -94,6 +94,34 @@ body.dark-mode .nav-links a:hover {
   color: #fca77d;
 }
 
+body.dark-mode .bg-white,
+body.dark-mode .bg-gray-50,
+body.dark-mode .bg-gray-100 {
+  background-color: #1f1f1f;
+}
+
+body.dark-mode .hover\:bg-gray-100:hover,
+body.dark-mode .hover\:bg-gray-200:hover {
+  background-color: #2a2a2a;
+}
+
+body.dark-mode .text-black,
+body.dark-mode .text-gray-800,
+body.dark-mode .text-gray-700 {
+  color: #efefef;
+}
+
+body.dark-mode .text-gray-600,
+body.dark-mode .text-gray-500 {
+  color: #bdbdbd;
+}
+
+body.dark-mode .border-gray-100,
+body.dark-mode .border-gray-200,
+body.dark-mode .border-gray-300 {
+  border-color: #2f2f2f;
+}
+
 html {
   scroll-behavior: smooth;
 }

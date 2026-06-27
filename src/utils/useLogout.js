@@ -8,13 +8,10 @@ function useLogOut() {
   const logOut = () => {
     signOut(auth)
       .then(() => {
-        console.log("User logged out");
-        unsubscribeObserver(); 
-        navigate("/"); 
+        unsubscribeObserver();
+        navigate("/");
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   };
 
   return logOut;

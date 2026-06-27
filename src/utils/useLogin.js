@@ -9,11 +9,8 @@ async function logIn(email, password) {
       user = userCredential.user;
     })
     .catch((error) => {
-      console.log("Error detected");
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
     });
   return user;
 }

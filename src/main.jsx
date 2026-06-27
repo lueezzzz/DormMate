@@ -13,6 +13,7 @@ import PermitLogsPage from "./pages/PermitLogsPage.jsx";
 import NotificationPage from "./pages/NotificationPage.jsx";
 import { applyStoredTheme } from "./utils/theme";
 import RequireAdmin from "./components/RequireAdmin.jsx";
+import RequireUser from "./components/RequireUser.jsx";
 
 applyStoredTheme();
 
@@ -31,7 +32,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/file-permit",
-    element: <FilePermitPage />,
+    element: (
+      <RequireUser>
+        <FilePermitPage />
+      </RequireUser>
+    ),
   },
   {
     path: "/transient",
@@ -67,11 +72,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/permit-log",
-    element: <PermitLogsPage />,
+    element: (
+      <RequireUser>
+        <PermitLogsPage />
+      </RequireUser>
+    ),
   },
   {
     path: "/notifications",
-    element: <NotificationPage />,
+    element: (
+      <RequireUser>
+        <NotificationPage />
+      </RequireUser>
+    ),
   },
 ]);
 

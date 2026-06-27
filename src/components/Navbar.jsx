@@ -37,8 +37,7 @@ const Navbar = () => {
   }, [isDark]);
 
   const renderButton = () => {
-    console.log("The pathname is: ", location.pathname);
-
+   
     if (location.pathname === "/") {
       return (
         <Toggle

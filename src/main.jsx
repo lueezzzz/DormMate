@@ -2,12 +2,10 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import AdminPermits from "./pages/AdminPermits.jsx";
-import DormerHomepage from "./pages/DormerHomepage.jsx";
 import TransientView from "./pages/TransientView.jsx";
 import TransientSuccess from "./pages/TransientSuccess.jsx";
 import TransientBooking from "./pages/TransientBooking.jsx";
 import LoginPage from "./pages/Login.jsx";
-import TestDormPage from "./pages/TestDormerPage.jsx";
 import ManageDormers from "./pages/ManageDormers.jsx";
 import ManageRooms from "./pages/ManageRooms.jsx";
 import FilePermitPage from "./pages/FilePermitPage.jsx";
@@ -25,7 +23,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/file-permit",
-    element: <FilePermitPage/>,
+    element: <FilePermitPage />,
   },
   {
     path: "/transient",
@@ -44,28 +42,23 @@ const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    path: "/testDormer",
-    element: <TestDormPage />,
-  },
-  {
     path: "/manage-dormers",
-    element: <ManageDormers/>
+    element: <ManageDormers />,
   },
   {
     path: "/manage-rooms",
-    element: <ManageRooms/>
+    element: <ManageRooms />,
   },
   {
     path: "/permit-log",
-    element: <PermitLogsPage/>
+    element: <PermitLogsPage />,
   },
   {
     path: "/notifications",
-    element: <NotificationPage/>
-  }
-
+    element: <NotificationPage />,
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <RouterProvider router={router} />,
 );

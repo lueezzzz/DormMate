@@ -20,7 +20,6 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import EmptyLog from "../assets/images/EmptyLog.png";
 
-import Loader1 from "@/loaders/Loader1";
 import { ClassicSpinner } from "react-spinners-kit";
 
 import { Trash2 } from "lucide-react";

@@ -5,7 +5,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase/db";
-import Loader1 from "@/loaders/Loader1";
 import { ClassicSpinner } from "react-spinners-kit";
 
 const FilePermitModal = ({ openModal, setOpenModal, userDetails }) => {

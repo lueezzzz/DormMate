@@ -6,7 +6,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/auth";
 import getDormerPermits from "@/utils/useGetDormerPermits";
 import PermitModal from "@/modals/PermitModal";
-import Loader1 from "@/loaders/Loader1";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSideBar";
 import EmptyLog from "../assets/images/EmptyLog.png";

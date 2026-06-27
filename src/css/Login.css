@@ -1,32 +1,47 @@
-.login{
-    height: 100vh;
+.login {
+  height: 100vh;
 }
 
-.welcome-user{
-    text-align: center;
-    margin-bottom: 50px;
+.welcome-user {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
-.welcome-user h1{
+.welcome-user h1 {
   font-size: 30px;
   font-weight: bold;
 }
 
-.login{
+body.dark-mode .welcome-user h1,
+body.dark-mode .welcome-user p,
+body.dark-mode .email-label,
+body.dark-mode .password-label,
+body.dark-mode .login-form label,
+body.dark-mode .login-form input,
+body.dark-mode .login-form button,
+body.dark-mode .login-form .forgot-password {
+  color: #efefef;
+}
+
+body.dark-mode .login-form input {
+  background-color: #2a2a2a;
+}
+
+body.dark-mode .login-form input::placeholder {
+  color: #bdbdbd;
+}
+
+.login {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-.email-label{
+.email-label {
   margin-bottom: 10px;
 }
 
-.password-label{
+.password-label {
   margin-bottom: 10px;
 }
-
-
-
-

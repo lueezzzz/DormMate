@@ -81,14 +81,14 @@ const BookingForm = () => {
         </div>
         <Button 
           type="submit" 
-          className="bg-[#ff8d4e] hover:bg-[#d3723e]"
+          className="bg-[#ff8d4e] hover:bg-[#d3723e] text-white"
           onClick={handleBook}>
         Book
         </Button>
         <Button
           type="button"
           variant="ghost"
-          className="bg-[#d3d3d3] hover:bg-[#c9c4c2]"
+          className="bg-[#d3d3d3] hover:bg-[#c9c4c2] text-black"
           onClick={handleCancel}>
         Cancel
         </Button>

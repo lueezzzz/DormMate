@@ -1,4 +1,4 @@
-import { FolderKanban, FileCheck, Inbox, UsersRound } from "lucide-react";
+import { FolderKanban, FileCheck, UsersRound } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import useLogOut from "@/utils/useLogout";
 import { useEffect, useState } from "react";
@@ -74,7 +74,7 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar className="bg-white dark:bg-[#1f1f1f] w-64 text-[#ff8d4e]">
+    <Sidebar className="app-sidebar bg-white dark:bg-red-500 w-64 text-[#ff8d4e]">
       <div className="p-4 text-2xl font-bold">DormMate</div>
       <SidebarContent>
         <SidebarGroup>

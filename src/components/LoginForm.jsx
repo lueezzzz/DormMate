@@ -21,15 +21,18 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [loggingIn, setIsLoggingIn] = useState(false);
   const [forgotPasswordEmail, setForgotPasswordEmail] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   async function handleLogin() {
     setIsLoggingIn(true);
+    setError("");
     try {
       const route = await resolveRouteByLogin(email, password);
       navigate(route);
     } catch (error) {
       console.error("Login failed:", error);
+      setError("Invalid email or password");
     } finally {
       setIsLoggingIn(false);
     }
@@ -71,7 +74,10 @@ const LoginForm = () => {
                 size={100}
                 value={email}
                 placeholder="name@up.edu.ph"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setError("");
+                }}
                 className="bg-gray-100 border-none"
                 required
               />
@@ -86,13 +92,16 @@ const LoginForm = () => {
                 type="password"
                 placeholder="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setError("");
+                }}
                 className="bg-gray-100"
                 required
               />
             </div>
 
-            <div className="flex justify-end">
+            <div className="flex flex-col items-end gap-2">
               <Dialog>
                 <DialogTrigger asChild>
                   <button className="text-sm text-[#ff8d4e] hover:underline">
@@ -127,6 +136,7 @@ const LoginForm = () => {
                   </DialogFooter>
                 </DialogContent>
               </Dialog>
+               {error && <p className="text-red-500 text-sm self-center">{error}!</p>}
             </div>
 
             <div>

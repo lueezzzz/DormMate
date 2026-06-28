@@ -1,48 +1,16 @@
-# 📖 DormMate - a Dorm Management System
+# DormMate 
 
-This will be the official repository for DormMate - a Dorm Management System Web Application tailored 
+A web application designed to digitize the permit filing process for university dormitories at the University of the Philippines Visayas.
 
-Live website deployment: https://dorm-mate.netlify.app/
+## Key Features
+- Role-based Access Control (RBAC)
+- Comprehensive Permit Filing
+- Centralized Permit Management
+- Relocation Handling
 
-To access as a dormer please use the following credentials:
-testuser@up.edu.ph
-testpassword
+## Tech Stack
+- React with Vite   
+- Firebase 
+- npm
+- Netlify
 
-To access as a dorm manager please use the following credentials:
-testuser2@up.edu.ph
-testpassword
-
-
-## 💻 Technology stack
-- Firebase
-- Express.js
-- React
-- Node.js 
-
-## 🔌 Installation
-1. Clone the repository:
-```
- git clone https://github.com/lueezzzz/DormMate.git
-```
-
-2. Install dependencies:
-```
- npm install
-```
-
-## 🧞 Usage
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:5173`      |
-
-**Changing the codebase**
-
-1. Clone the repository.
-2. Create a new branch: `git checkout -b branch-name`.
-3. Make your changes.
-4. Push your branch: `git push origin branch-name`.
-5. Create a pull request.

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import "../css/TransientBooking.css";
+import "../../css/TransientBooking.css";
 
 const BookingForm = () => {
   const navigate = useNavigate();

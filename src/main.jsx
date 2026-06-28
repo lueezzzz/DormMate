@@ -5,7 +5,7 @@ import AdminPermits from "./pages/AdminPermits.jsx";
 import TransientView from "./pages/TransientView.jsx";
 import TransientSuccess from "./pages/TransientSuccess.jsx";
 import TransientBooking from "./pages/TransientBooking.jsx";
-import LoginPage from "./pages/Login.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 import ManageDormers from "./pages/ManageDormers.jsx";
 import ManageRooms from "./pages/ManageRooms.jsx";
 import FilePermitPage from "./pages/FilePermitPage.jsx";
@@ -14,6 +14,7 @@ import NotificationPage from "./pages/NotificationPage.jsx";
 import { applyStoredTheme } from "./utils/theme";
 import RequireAdmin from "./components/RequireAdmin.jsx";
 import RequireUser from "./components/RequireUser.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 
 applyStoredTheme();
 
@@ -23,20 +24,8 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/manage",
-    element: (
-      <RequireAdmin>
-        <AdminPermits />
-      </RequireAdmin>
-    ),
-  },
-  {
-    path: "/file-permit",
-    element: (
-      <RequireUser>
-        <FilePermitPage />
-      </RequireUser>
-    ),
+    path: "/login",
+    element: <LoginPage />,
   },
   {
     path: "/transient",
@@ -51,43 +40,43 @@ const router = createBrowserRouter([
     element: <TransientBooking />,
   },
   {
-    path: "/login",
-    element: <LoginPage />,
+    element: <RequireUser />,
+    children: [
+      {
+        path: "/file-permit",
+        element: <FilePermitPage />,
+      },
+      {
+        path: "/permit-log",
+        element: <PermitLogsPage />,
+      },
+      {
+        path: "/notifications",
+        element: <NotificationPage />,
+      },
+    ],
   },
   {
-    path: "/manage-dormers",
-    element: (
-      <RequireAdmin>
-        <ManageDormers />
-      </RequireAdmin>
-    ),
-  },
-  {
-    path: "/manage-rooms",
-    element: (
-      <RequireAdmin>
-        <ManageRooms />
-      </RequireAdmin>
-    ),
-  },
-  {
-    path: "/permit-log",
-    element: (
-      <RequireUser>
-        <PermitLogsPage />
-      </RequireUser>
-    ),
-  },
-  {
-    path: "/notifications",
-    element: (
-      <RequireUser>
-        <NotificationPage />
-      </RequireUser>
-    ),
+    element: <RequireAdmin />,
+    children: [
+      {
+        path: "/manage",
+        element: <AdminPermits />,
+      },
+      {
+        path: "/manage-dormers",
+        element: <ManageDormers />,
+      },
+      {
+        path: "/manage-rooms",
+        element: <ManageRooms />,
+      },
+    ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />,
+  <AuthProvider>
+    <RouterProvider router={router} />
+  </AuthProvider>,
 );

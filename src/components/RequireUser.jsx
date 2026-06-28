@@ -1,11 +1,10 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/firebase/auth";
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
 import Loader2 from "@/loaders/Loader2";
 
-const RequireUser = ({ children }) => {
-  const [user, isLoading] = useAuthState(auth);
+const RequireUser = () => {
+  const { user, isLoading } = useAuth();
 
   if (isLoading) {
     return (
@@ -15,11 +14,9 @@ const RequireUser = ({ children }) => {
     );
   }
 
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
+  if (!user) return <Navigate to="/login" replace />;
 
-  return children;
+  return <Outlet />;
 };
 
 export default RequireUser;

@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Headline from "@/components/Headline";
 import Footer from "@/components/landing-page/Footer";
 import "../css/TransientBooking.css";
-import BookingForm from "@/components/BookingForm";
+import BookingForm from "@/components/forms/BookingForm";
 
 const TransientBooking = () => {
   const location = useLocation();

@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import resolveRouteByLogin from "@/utils/resolveRouteByLogin";
 import { Label, Flowbite } from "flowbite-react";
 import { ClassicSpinner } from "react-spinners-kit";
-import "../css/Login.css";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import "../../css/Login.css"
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 import {
   Dialog,
   DialogTrigger,
